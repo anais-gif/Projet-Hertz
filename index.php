@@ -12,8 +12,7 @@
     <title>Hertz - Lons-le-saunier</title>
 </head>
 <body>
-
-
+<img src="images/1200px-Hertz-Logo.svg.png"/>
 <table class="table">
   <thead>
     <tr>

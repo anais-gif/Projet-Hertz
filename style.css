@@ -2,3 +2,79 @@ body{
     margin: 0;
     padding: 0;
 }
+
+
+
+header{
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.ale{
+    
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    position: relative;
+}
+
+
+.ale::before{
+    content:"";
+    height: 10px;
+    width: 117px;
+    background-color: rgb(255, 210, 1);
+    position: absolute;
+    bottom: 0;
+}
+.ale::after{
+    content: "®";
+    color: gray;
+    font-size: 20px;
+    opacity: 80%;
+    text-decoration: none !important;
+}
+
+nav,a{
+    color: black !important;
+    text-transform: uppercase;
+    
+}
+
+hr{
+    background-color:  rgb(255, 210, 1);
+    height: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.beau{
+    margin: 0;
+    padding: 0;
+}
+
+.colori{
+ background-color: white;
+ opacity: 70%;
+ left: 60%;
+}
+
+input{
+    height: 20px;
+}
+
+.locationvoiture{
+    left: 40%;
+    bottom: 0;
+    top: 0;
+}
+
+.b1{
+    background-color:rgb(255, 210, 1);
+    color: white;
+}
+
+.b2{
+    background-color:black;
+    color: white;
+}
