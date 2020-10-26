@@ -56,7 +56,8 @@ hr{
 .colori{
  background-color: white;
  opacity: 70%;
- left: 60%;
+ left: 52%;
+ top: 20%
 }
 
 input{
@@ -64,9 +65,8 @@ input{
 }
 
 .locationvoiture{
-    left: 40%;
-    bottom: 0;
-    top: 0;
+    left: 35%;
+    top: 70%;
 }
 
 .b1{
