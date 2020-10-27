@@ -56,18 +56,12 @@ hr{
 .colori{
  background-color: white;
  opacity: 70%;
- left: 52%;
- top: 20%
 }
 
 input{
     height: 20px;
 }
 
-.locationvoiture{
-    left: 35%;
-    top: 70%;
-}
 
 .b1{
     background-color:rgb(255, 210, 1);
@@ -76,5 +70,91 @@ input{
 
 .b2{
     background-color:black;
-    color: white;
+    color: white!important;
+}
+
+.her{
+    background-color: black !important;
+    height: 0.1px;
+    margin-top: 200px;
+}
+
+@media(max-width:767px){
+
+    .colori{
+        left: 52%;
+        top: 20%
+       }
+
+       .locationvoiture{
+        left: 35%;
+        top: 70%;
+    }
+}
+
+
+@media(min-width:768px){}
+
+@media(min-width:992px){
+
+    .colori{
+        left: 52%;
+        top: 20%
+       }
+
+       .locationvoiture{
+        left: 35%;
+        top: 70%;
+    }
+}
+
+@media(min-width:1800px){
+
+    .colori{
+        left: 52%;
+        top: 20%
+       }
+
+       .locationvoiture{
+        left: 35%;
+        top: 55%;
+    }
+
+}
+
+/*Test javascript*/
+
+footer{
+    background-color: rgb(243,244,248);
+    line-height: 9px;
+
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+.tfi{
+    font-size: 12px;
+  
+}
+
+.magic{
+    left: -25%;
+    height: 300px;
+    width: 1000px;
+    background-color:white;
+}
+
+.hlel{
+    width: 295px;
+    left: 0%;
+    background-color:rgb(243,244,248);
+    font-size: 5px;
 }
