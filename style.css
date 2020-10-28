@@ -148,9 +148,9 @@ h2{
 
 .magic{
     left: -25%;
-    height: 300px;
+    height: 200px;
     width: 1000px;
-    background-color:white;
+    background-color: rgba(255, 210, 1, 0.40)
 }
 
 .hlel{
@@ -214,4 +214,53 @@ a:hover{
     text-align: center;
     color: white;
     font-size: 3vh;
+}
+
+.tableau{
+    margin-top: 50px;
+}
+
+.disponibilite{
+    margin-top: 150px;
+}
+
+.zouper{
+    position: absolute;
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 5px;
+    width: 50%;
+    left: 25%;
+}
+
+.fifi{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.boutoon{
+    
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.megadrole{
+    border-style: none;
+    height: 30px;
+    width: 50%;
+}
+
+.modi{
+    font-size: 30px;
+    color: white;
+}
+
+.boot{
+    
+    background-color: rgba(48, 48, 48, 0.5);
+    border-style: none;
+    width: 100px;
 }
