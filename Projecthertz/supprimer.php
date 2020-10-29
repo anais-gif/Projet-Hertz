@@ -10,6 +10,7 @@ catch (PDOException $e) {
 }
   
 ?>
+<!-- COTE ADMIN -->
 
 <!doctype html>
 <html lang="fr">

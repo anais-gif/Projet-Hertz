@@ -10,6 +10,7 @@ catch (PDOException $e) {
 }
   
 ?>
+<!-- COTE ADMIN -->
 
 <!doctype html>
 <html lang="fr">
@@ -22,7 +23,6 @@ catch (PDOException $e) {
 </head>
 
 <body>
-
 
         <p>Modifier un vehicule<p>
 

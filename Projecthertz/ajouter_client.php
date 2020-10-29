@@ -10,14 +10,18 @@ catch (PDOException $e) {
 }
 
 
-if(isset($_GET['action']) && !empty($_GET['modele'])  && !empty($_GET['prix'])  && !empty($_GET['annee'])){
+if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
       
-    $ajouter = $db->prepare('INSERT INTO vehicule (modele_voiture,prix_voiture,annee_voiture) VALUES (:modele, :prix, :annee)');
-    $ajouter->bindParam(':modele', $_GET['modele'], 
+    $ajouter = $db->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens) VALUES (:adresse, :nom, :prenom, :ville, :cp)');
+    $ajouter->bindParam(':adresse', $_GET['adresse'], 
     PDO::PARAM_STR);
-    $ajouter->bindParam(':prix', $_GET['prix'], 
-    PDO::PARAM_INT);
-    $ajouter->bindParam(':annee', $_GET['annee'], 
+    $ajouter->bindParam(':nom', $_GET['nom'], 
+    PDO::PARAM_STR);
+    $ajouter->bindParam(':prenom', $_GET['prenom'], 
+    PDO::PARAM_STR);
+    $ajouter->bindParam(':ville', $_GET['ville'], 
+    PDO::PARAM_STR);
+    $ajouter->bindParam(':cp', $_GET['cp'], 
     PDO::PARAM_INT);
     $plus= $ajouter->execute();
 
@@ -41,12 +45,14 @@ if(isset($_GET['action']) && !empty($_GET['modele'])  && !empty($_GET['prix'])  
 </head>
 
 <body>
-    <p> Ajouter un nouveau vehicule <p>
+    <p> Ajouter-vous s'il vous plaît <p>
     
     <form method='GET'>
-        <input type="text" name="modele" placeholder='modele'>
-        <input type="text" name="prix" placeholder='prix'>
-        <input type="text" name="annee" placeholder='annee'>
+        <input type="text" name="nom" placeholder='nom'>
+        <input type="text" name="prenom" placeholder='prenom'>
+        <input type="text" name="adresse" placeholder='adresse'>
+        <input type="text" name="ville" placeholder='ville'>
+        <input type="text" name="cp" placeholder='cp'>
         <button type="submit" value="ajouter" name="action">Ajouter</button>
     </form>
 
