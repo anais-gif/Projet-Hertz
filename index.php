@@ -1,3 +1,40 @@
+<?php 
+
+try {
+    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
+
+    }
+catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage(). "<br/>";
+    die();
+}
+  
+?>
+
+<?php if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
+      
+      $ajouter = $db->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens) VALUES (:adresse, :nom, :prenom, :ville, :cp)');
+      $ajouter->bindParam(':adresse', $_GET['adresse'], 
+      PDO::PARAM_STR);
+      $ajouter->bindParam(':nom', $_GET['nom'], 
+      PDO::PARAM_STR);
+      $ajouter->bindParam(':prenom', $_GET['prenom'], 
+      PDO::PARAM_STR);
+      $ajouter->bindParam(':ville', $_GET['ville'], 
+      PDO::PARAM_STR);
+      $ajouter->bindParam(':cp', $_GET['cp'], 
+      PDO::PARAM_INT);
+      $plus= $ajouter->execute();
+  
+          if($plus){
+              echo 'votre enregistrement a été ajouté';
+          } else {
+              echo 'Une erreur est survenue';
+          }
+      }
+    
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +50,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
+    <link rel="icon" type="image/png" href="images/1200px-Hertz-Logo.svg.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hertz - Lons-le-saunier</title>
@@ -20,7 +58,7 @@
 
 <body>
 
-    <header>
+<header>
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-md-4 ">
@@ -30,155 +68,174 @@
                     <p class="fr"><img src="images/Sans titre-1.jpg"> FR/fr</p>
                 </div>
                 <div class="col-12 col-md-3">
-                    <a href=""class="btnPopup" id="btnPopup">Se connecter/S'inscrire</a>
+                    <a href="#" class="btnPopup" id="btnPopup">Se connecter/S'inscrire</a>
+
+                    <!--PopUp-->
                     <div id="overlay" class="overlay">
-                    <div id="popup" class="popup">
-                       <h2>simple popup</h2> <span id="btnclose" class="btnclose">&times;</span></div>
+                        <div id="popup" class="popup">
+
+
+                            <div class="parent">
+                                <div class="colonne">
+                                    <div class="bloc1">
+                                        Bloc 1
+                                    </div>
+                                    <div class="bloc2">
+                                        <form method='GET'>
+        <input type="text" name="nom" placeholder='nom'>
+        <input type="text" name="prenom" placeholder='prenom'>
+        <input type="text" name="adresse" placeholder='adresse'>
+        <input type="text" name="ville" placeholder='ville'>
+        <input type="text" name="cp" placeholder='cp'>
+        <button type="submit" value="ajouter" name="action">Ajouter</button>
+    </form>
+                                    </div>
+                                </div>
+                                <div class="colonne">
+                                    <div class="bloc3"><span id="btnclose" class="btnclose">&times;</span>
+                                        Bloc 3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!--Fin PopUp-->
+
             </div>
         </div>
     </header>
 
-    <nav><ul class="nav navbar-expand justify-content-start">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                location de voitures
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Réservez une voiture </a>
-                <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
-                <a class="dropdown-item" href="#">Nos voitures de location</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Location d'utilitaires
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Offres
-            </a>
-            <div class="dropdown-menu" >
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Ma réservation
-            </a>
-            <div class="dropdown-menu" >
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Fidélité
-            </a>
-            <div class="dropdown-menu" >
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Espace pro</a>
+    <nav>
+        <ul class="nav navbar-expand justify-content-start">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    location de voitures
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Réservez une voiture </a>
+                    <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
+                    <a class="dropdown-item" href="#">Nos voitures de location</a>
+                </div>
             </li>
-    </ul>
-    </div></nav>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Location d'utilitaires
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Offres
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Ma réservation
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Fidélité
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Espace pro</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
 
     <hr>
 
     <section class="beau">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-lg-12 col-xl-12" >
-                    <p><img class="img-fluid position-relative"  src="images/2017-Citroen-C4-Cactus-petrol-auto-vs-Renault-Captur-Intens-133.jpg"/></p>
+                <div class="col-sm-12 col-lg-12 col-xl-12">
+                    <p><img class="img-fluid position-relative"
+                            src="images/2017-Citroen-C4-Cactus-petrol-auto-vs-Renault-Captur-Intens-133.jpg" /></p>
                 </div>
                 <div class="col-sm-12 col-lg-4 col-xl-3 colori position-absolute">
-                    <p>Evadez vous avec Lons-le-saunier Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, aliquam. Illo est provident modi eligendi, dolorem neque tempore voluptatum commodi tempora fugiat soluta quam id officiis odio excepturi, molestiae ipsa.</p>
+                    <p>Evadez vous avec Lons-le-saunier Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
+                        aliquam. Illo est provident modi eligendi, dolorem neque tempore voluptatum commodi tempora
+                        fugiat soluta quam id officiis odio excepturi, molestiae ipsa.</p>
                 </div>
             </div>
-        </div>   
+        </div>
         <div class="locationvoiture position-absolute ">
-            <a class="btn b1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-               Voitures
-              </a>
-              <a class="btn b2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="btn b1" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                Voitures
+            </a>
+            <a class="btn b2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
                 Véhicules utilitaires
-               </a>
-        <div class="collapse" id="collapseExample">
-            <hr class="hlel position-relative">
-            <div class="container magic position-relative">
-                <div class="row">
-                    <hr>
-            <div class="col-sm-12 col-lg-6 col-xl-6">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Email address</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect1">Example select</label>
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect2">Example multiple select</label>
-                      <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                  </form>
-               </div></div></div></div></div>
-            
-        
-        
+            </a>
+            <div class="collapse" id="collapseExample">
+                <hr class="hlel position-relative">
+                <div class="container magic position-relative">
+                   
+                        
+                        <div class="container">
+                            <label for="site-search" class="modi d-flex justify-content-center">Modèle de voiture :</label></div>
+                            <div class="container fifi">
+                            <input class="megadrole" type="search" id="site-search" name="q" placeholder="Ton modèle de voiture"
+                                   aria-label="Search through site content"></div>
+                                   <div class="container boutoon">
+                            <button class="boot">Chercher</button></div>
+                       
+                </div>
+            </div>
+        </div>
+
+
+
     </section>
 
-    <hr class="her"/>
+    <hr class="her" />
 
     <footer>
         <div class="container">
             <div class="row">
-            <div class="col-4">
-                <h2 class="uppercase">Hertz.com</h2>
-                <p class="tfi">Réserver</p>
-                <p class="tfi">Nos offres spéciales</p>
-                <p class="tfi">Notre flotte</p>
-            </div>
-            <div class="col-4">
-                <h2>A propos de Hertz</h2>
-            </div>
-            <div class="col-4">
-                <h2>Assistance</h2>
+                <div class="col-4">
+                    <h2 class="uppercase">Hertz.com</h2>
+                    <p class="tfi">Réserver</p>
+                    <p class="tfi">Nos offres spéciales</p>
+                    <p class="tfi">Notre flotte</p>
+                </div>
+                <div class="col-4">
+                    <h2>A propos de Hertz</h2>
+                </div>
+                <div class="col-4">
+                    <h2>Assistance</h2>
+                </div>
             </div>
         </div>
-    </div>
     </footer>
 
     <!--<script>
@@ -193,9 +250,9 @@ function chacgementCouleur() {
         </script>
 
     -->
- 
 
-    <script src="script.js"></script> 
+
+    <script src="script.js"></script>
 </body>
 
 </html>

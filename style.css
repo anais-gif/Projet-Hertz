@@ -210,6 +210,7 @@ a:hover{
 }
 
 .ptikiff{
+    position: relative;
     margin-top: 7%;
     text-align: center;
     color: white;
@@ -263,4 +264,57 @@ a:hover{
     background-color: rgba(48, 48, 48, 0.5);
     border-style: none;
     width: 100px;
+}
+
+
+.parent{
+    position: relative;
+    margin: 12% auto;
+    height: 550px;
+    border-radius: 5px;
+    box-shadow: 15px;
+    z-index: 4;
+    display: flex;
+    flex-direction: row;
+}
+.bloc1{
+    display: flex;
+   align-items: center;
+    justify-content: center;
+    color:white;
+    height: 50px;
+    background-color: black
+    
+}
+
+.bloc2{
+   display: flex;
+   align-items: center; 
+   line-height: 40px;
+   padding-left: 25%;
+    justify-content: center;
+    background-color: white;
+    height: 500px;
+}
+
+.colonne{
+    width: 50%;
+}
+.bloc3{
+    display: flex;
+    color:white;
+    height: 100%;
+    background-color: rgb(255, 210, 1);
+}
+
+.boubou{
+    width: 200px;
+    border-style: none;
+    background-color: rgba(255, 210, 1, 0.5) ;
+}
+
+.pretent{
+    border: rgba(0, 0, 0, 0.7);
+    width:240px;
+
 }
