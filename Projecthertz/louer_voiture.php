@@ -45,7 +45,7 @@ if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  
 </head>
 
 <body>
-    <p> Ajouter-vous s'il vous plaît <p>
+    <p> Vous avez louer <p>
     
     <form method='GET'>
         <input type="text" name="nom" placeholder='nom'>
@@ -54,7 +54,7 @@ if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  
         <input type="text" name="ville" placeholder='ville'>
         <input type="text" name="cp" placeholder='cp'>
         <input type="text" name="modele" placeholder='modele'>
-        <input type="text" name="modele" placeholder='modele'>
+        <input type="text" name="" placeholder='modele'>
         <button type="submit" value="ajouter" name="action">Ajouter</button>
     </form>
 

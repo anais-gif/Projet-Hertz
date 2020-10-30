@@ -1,37 +1,6 @@
 <?php 
+include('fonction.php');
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage(). "<br/>";
-    die();
-}
-
-
-if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
-      
-    $ajouter = $db->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens) VALUES (:adresse, :nom, :prenom, :ville, :cp)');
-    $ajouter->bindParam(':adresse', $_GET['adresse'], 
-    PDO::PARAM_STR);
-    $ajouter->bindParam(':nom', $_GET['nom'], 
-    PDO::PARAM_STR);
-    $ajouter->bindParam(':prenom', $_GET['prenom'], 
-    PDO::PARAM_STR);
-    $ajouter->bindParam(':ville', $_GET['ville'], 
-    PDO::PARAM_STR);
-    $ajouter->bindParam(':cp', $_GET['cp'], 
-    PDO::PARAM_INT);
-    $plus= $ajouter->execute();
-
-        if($plus){
-            echo 'votre enregistrement a été ajouté';
-        } else {
-            echo 'Une erreur est survenue';
-        }
-    }
-  
 ?>
  <!-- COTE ADMIN -->
 <!doctype html>
@@ -56,7 +25,12 @@ if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  
         <button type="submit" value="ajouter" name="action">Ajouter</button>
     </form>
 
-
+<?php
+if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
+      
+    ajouter_client();
+      } 
+?>
 
     </body>
 </html>

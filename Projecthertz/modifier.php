@@ -1,13 +1,6 @@
 <?php 
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage(). "<br/>";
-    die();
-}
+include('fonction.php');
   
 ?>
 <!-- COTE ADMIN -->
@@ -36,24 +29,8 @@ catch (PDOException $e) {
 
     <?php 
     if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee'])){
-       
-        $modifier = $db->prepare('UPDATE vehicule SET modele_voiture = :modele,prix_voiture=:prix,annee_voiture=:annee WHERE id_voiture =:id');
-        $modifier->bindParam(':id', $_GET['id'], PDO::PARAM_STR);
-        $modifier->bindParam(':modele', $_GET['modele'], PDO::PARAM_STR);
-        $modifier->bindParam(':prix', $_GET['prix'], PDO::PARAM_STR);        
-        $modifier->bindParam(':annee', $_GET['annee'], PDO::PARAM_STR);      
-
-
+       modifier();
         
-        $modifier = $modifier->execute();
-      
-            if($modifier){
-                echo 'votre enregistrement a bien été modifié';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
         }
     
 ?>

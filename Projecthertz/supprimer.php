@@ -1,14 +1,5 @@
 <?php 
-
-try {
-    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage(). "<br/>";
-    die();
-}
-  
+include('fonction.php')
 ?>
 <!-- COTE ADMIN -->
 
@@ -35,17 +26,6 @@ catch (PDOException $e) {
     <?php 
     if(isset($_GET['action']) && $_GET['action']=="supprimer" && !empty($_GET['id'])){
         
-        $supprimer = $db->prepare('DELETE FROM vehicule WHERE id_voiture = :id');
-        $supprimer->bindParam(':id', $_GET['id'],PDO::PARAM_STR);
-
-
-        $supprimer = $supprimer->execute();
-            if($supprimer){
-                echo 'votre enregistrement a bien été supprimé';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
+        supprimer();
         }
     ?>

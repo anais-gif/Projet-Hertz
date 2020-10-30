@@ -8,6 +8,8 @@ catch (PDOException $e) {
   print "Erreur !: " . $e->getMessage(). "<br/>";
   die();
 }
+
+
 $pdoStat =$db->prepare('SELECT * FROM vehicule');
 $executeIsOk=$pdoStat->execute();
 $vehicule=$pdoStat->fetchAll();
@@ -47,3 +49,4 @@ $vehicule=$pdoStat->fetchAll();
     <?php endforeach; ?>
 </body>
 </html>
+
