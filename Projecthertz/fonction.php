@@ -9,7 +9,20 @@ function bdd(){
         die();
     }
 }
+function afficher_client(){
+    
+$pdoStat =$db->prepare('SELECT * FROM client');
+$executeIsOk=$pdoStat->execute();
+$client=$pdoStat->fetchAll();
 
+}
+function afficher_liste(){
+
+    $pdoStat =$db->prepare('SELECT * FROM vehicule');
+$executeIsOk=$pdoStat->execute();
+$vehicule=$pdoStat->fetchAll();
+
+}
 
 function ajouter(){
 

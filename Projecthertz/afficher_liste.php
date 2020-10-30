@@ -1,19 +1,6 @@
 <?php 
-
-try {
-    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage(). "<br/>";
-    die();
-}
-
-
-$pdoStat =$db->prepare('SELECT * FROM vehicule');
-$executeIsOk=$pdoStat->execute();
-$vehicule=$pdoStat->fetchAll();
-
+include ('fonction.php');
+afficher_client();
 ?>
  <!-- COTE ADMIN -->
  
