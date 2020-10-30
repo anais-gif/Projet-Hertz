@@ -1,36 +1,12 @@
 <?php 
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage(). "<br/>";
-    die();
-}
+include ('fonction.php');
   
 ?>
 
 <?php if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
-      
-      $ajouter = $db->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens) VALUES (:adresse, :nom, :prenom, :ville, :cp)');
-      $ajouter->bindParam(':adresse', $_GET['adresse'], 
-      PDO::PARAM_STR);
-      $ajouter->bindParam(':nom', $_GET['nom'], 
-      PDO::PARAM_STR);
-      $ajouter->bindParam(':prenom', $_GET['prenom'], 
-      PDO::PARAM_STR);
-      $ajouter->bindParam(':ville', $_GET['ville'], 
-      PDO::PARAM_STR);
-      $ajouter->bindParam(':cp', $_GET['cp'], 
-      PDO::PARAM_INT);
-      $plus= $ajouter->execute();
-  
-          if($plus){
-              echo 'votre enregistrement a été ajouté';
-          } else {
-              echo 'Une erreur est survenue';
-          }
+   
+   ajouter_client();
       }
     
   ?>
@@ -58,7 +34,7 @@ catch (PDOException $e) {
 
 <body>
 
-<header>
+    <header>
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-md-4 ">
@@ -78,22 +54,27 @@ catch (PDOException $e) {
                             <div class="parent">
                                 <div class="colonne">
                                     <div class="bloc1">
-                                        Bloc 1
+                                        Inscrit-toi !
                                     </div>
                                     <div class="bloc2">
                                         <form method='GET'>
-        <input type="text" name="nom" placeholder='nom'>
-        <input type="text" name="prenom" placeholder='prenom'>
-        <input type="text" name="adresse" placeholder='adresse'>
-        <input type="text" name="ville" placeholder='ville'>
-        <input type="text" name="cp" placeholder='cp'>
-        <button type="submit" value="ajouter" name="action">Ajouter</button>
-    </form>
+                                            <input class="pretent" type="text" name="nom" placeholder='nom'>
+                                            <input class="pretent" type="text" name="prenom" placeholder='prenom'>
+                                            <input class="pretent" type="text" name="adresse" placeholder='adresse'>
+                                            <input class="pretent" type="text" name="ville" placeholder='ville'>
+                                            <input class="pretent" type="text" name="cp" placeholder='cp'>
+                                            <br>
+                                            <button class="boubou" type="submit" value="ajouter"
+                                                name="action">Ajouter</button>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="colonne">
                                     <div class="bloc3"><span id="btnclose" class="btnclose">&times;</span>
-                                        Bloc 3
+                                        <div class="zztop"><input class="jaune" type="text" name="pseudo"
+                                                placeholder="pseudo">
+                                            <input class="jaune" type="text" name="pseudo" placeholder="mot de passe">
+                                            <button <a href="admin.html">Connexion</a></button></div>
                                     </div>
                                 </div>
                             </div>
@@ -161,11 +142,11 @@ catch (PDOException $e) {
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="jo.html">Something else here</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Espace pro</a>
+                <a class="nav-link" href="admin.php">Espace pro</a>
             </li>
         </ul>
         </div>
@@ -199,19 +180,34 @@ catch (PDOException $e) {
             <div class="collapse" id="collapseExample">
                 <hr class="hlel position-relative">
                 <div class="container magic position-relative">
-                   
-                        
-                        <div class="container">
-                            <label for="site-search" class="modi d-flex justify-content-center">Modèle de voiture :</label></div>
-                            <div class="container fifi">
-                            <input class="megadrole" type="search" id="site-search" name="q" placeholder="Ton modèle de voiture"
-                                   aria-label="Search through site content"></div>
-                                   <div class="container boutoon">
-                            <button class="boot">Chercher</button></div>
-                       
+
+
+                    <div class="container">
+                        <label for="site-search" class="modi d-flex justify-content-center">Modèle de voiture :</label>
+                    </div>
+                    <div class="container fifi">
+                        <input class="megadrole" type="search" id="site-search" name="q"
+                            placeholder="Ton modèle de voiture" aria-label="Search through site content"></div>
+                    <div class="container boutoon">
+                        <button class="boot">Chercher</button></div>
+
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="col-sm-12 col-lg-4 col-xl-3 allelujah backeuh">
+                <p>Evadez vous avec Lons-le-saunier Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
+                    aliquam. Illo est provident modi eligendi, dolorem neque tempore voluptatum commodi tempora
+                    fugiat soluta quam id officiis odio excepturi, molestiae ipsa.</p>
+            </div>
+        </div>
+        <div class="container pecore allelujah"><label for="site-search"
+                class="modi d-flex justify-content-center">Modèle de voiture :</label>
+        <div class="container d-flex  justify-content-center allelujah">
+            <input class="allelujah megadrole justify-content-center" type="search" id="site-search" name="q"
+                placeholder="Ton modèle de voiture" aria-label="Search through site content"></div>
+        <div class="container boutoon allelujah">
+            <button class="allelujah boot ix">Chercher</button></div></div>
 
 
 

@@ -83,8 +83,15 @@ input{
 @media(max-width:767px){
 
     .colori{
-        left: 52%;
-        top: 20%
+        display: none;
+       }
+
+       .locationvoiture{
+           display: none;
+       }
+
+       .popup{
+           width: 100%;
        }
 
        .locationvoiture{
@@ -94,10 +101,17 @@ input{
 }
 
 
-@media(min-width:768px){}
+@media(min-width:768px){
+    .allelujah{
+        display: none;
+    }
+    
+}
 
 @media(min-width:992px){
-
+    .popup{
+        width: 45%;
+    }
     .colori{
         left: 52%;
         top: 20%
@@ -179,7 +193,6 @@ a:hover{
 .popup{
     position: relative;
     margin: 12% auto;
-    width: 45%;
     height: 550px;
     background-color: white;
     border-radius: 5px;
@@ -308,6 +321,7 @@ a:hover{
 }
 
 .boubou{
+    margin-top: 60px;
     width: 200px;
     border-style: none;
     background-color: rgba(255, 210, 1, 0.5) ;
@@ -318,3 +332,33 @@ a:hover{
     width:240px;
 
 }
+
+.backeuh{
+    margin-top: 0;
+    padding-top: 0 ;
+    background-color: rgba(43, 43, 43, 0.5);
+}
+
+.jaune{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pecore{
+    background-color: rgb(255, 210, 1);
+    opacity: 70%;
+}
+
+.ix{
+    margin-bottom: 20px;
+}
+
+
+.zztop{
+margin-top: 250px;
+margin-left: 50px;
+
+}
+
