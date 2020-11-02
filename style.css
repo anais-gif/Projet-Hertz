@@ -339,13 +339,6 @@ a:hover{
     background-color: rgba(43, 43, 43, 0.5);
 }
 
-.jaune{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
 .pecore{
     background-color: rgb(255, 210, 1);
     opacity: 70%;
@@ -362,3 +355,14 @@ margin-left: 50px;
 
 }
 
+.jaune{
+    border-style: none;
+    line-height: 40px;
+}
+
+.boubou2{
+    margin-top: 60px;
+    width: 200px;
+    border-style: none;
+    background-color: rgba(0, 0, 0, 0.5) ;
+}
