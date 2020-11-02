@@ -18,11 +18,18 @@ $client=$pdoStat->fetchAll();
 }
 function afficher_liste(){
 
-    $pdoStat =$db->prepare('SELECT * FROM vehicule');
+$pdoStat =$db->prepare('SELECT * FROM vehicule');
 $executeIsOk=$pdoStat->execute();
 $vehicule=$pdoStat->fetchAll();
 
 }
+function afficher_louer_voiture(){
+    
+    $pdoStat = $db->prepare('SELECT * FROM louer ');
+    $executeIsOk=$pdoStat->execute();
+    $louer=$pdoStat->fetchAll();
+    
+ }
 
 function ajouter(){
 
@@ -98,6 +105,24 @@ function supprimer(){
             } else {
                 echo 'Veuillez recommencer svp, une erreur est survenue';
             }
+}
+
+function ajouter_louer_voiture(){
+    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (id_cliens,id_voiture,date_de_location,date_fin_de_location) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location)');
+    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':modele', $_GET['modele'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
+    PDO::PARAM_STR);
+    $plus_louer=$ajouter_louer->execute();
+        if($plus_louer){
+            echo 'votre enregistrement a été ajouté';
+        } else {
+            echo 'Une erreur est survenue';
+        }
 }
 
 ?>

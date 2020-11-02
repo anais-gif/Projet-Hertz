@@ -1,9 +1,10 @@
-<?php 
-include ('fonction.php');
-afficher_client();
+<?php
+include('fonction.php');
+afficher_liste();
+
 ?>
  <!-- COTE ADMIN -->
- 
+
 <!doctype html>
 <html lang="fr">
 <head>
