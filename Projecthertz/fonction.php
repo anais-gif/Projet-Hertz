@@ -9,27 +9,27 @@ function bdd(){
         die();
     }
 }
-function afficher_client(){
+// function afficher_client(){
     
-$pdoStat =$db->prepare('SELECT * FROM client');
-$executeIsOk=$pdoStat->execute();
-$client=$pdoStat->fetchAll();
+// $pdoStat =$db->prepare('SELECT * FROM client');
+// $executeIsOk=$pdoStat->execute();
+// $clients=$pdoStat->fetchAll();
 
-}
-function afficher_liste(){
+// }
+// function afficher_liste(){
 
-$pdoStat =$db->prepare('SELECT * FROM vehicule');
-$executeIsOk=$pdoStat->execute();
-$vehicule=$pdoStat->fetchAll();
+// $pdoStat =$db->prepare('SELECT * FROM vehicule');
+// $executeIsOk=$pdoStat->execute();
+// $vehicules=$pdoStat->fetchAll();
 
-}
-function afficher_louer_voiture(){
+// }
+// function afficher_louer_voiture(){
+
+//     $pdoStat = $db->prepare('SELECT * FROM louer ');
+//     $executeIsOk=$pdoStat->execute();
+//     $louers=$pdoStat->fetchAll();
     
-    $pdoStat = $db->prepare('SELECT * FROM louer ');
-    $executeIsOk=$pdoStat->execute();
-    $louer=$pdoStat->fetchAll();
-    
- }
+//  }
 
 function ajouter(){
 

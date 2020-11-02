@@ -1,9 +1,11 @@
 
 <?php
+ 
+    $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
 
-include ('fonction.php');
-
-affiche_client();
+$pdoStat =$db->prepare('SELECT * FROM client');
+$executeIsOk=$pdoStat->execute();
+$clients=$pdoStat->fetchAll();
 ?>
  <!-- COTE ADMIN -->
  
@@ -29,7 +31,7 @@ affiche_client();
             <th scope="col" > CODE POSTAL</th>
           </tr>
     </thead>
-    <?php foreach($client as $client): ?>
+    <?php foreach($clients as $client): ?>
     <tbody class='table'>
   <tr class="thead-light">
   <th scope="col"><?= $client['id_cliens']?></th>

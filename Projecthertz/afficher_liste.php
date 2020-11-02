@@ -1,6 +1,12 @@
 <?php
-include('fonction.php');
-afficher_liste();
+
+  
+     $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
+ 
+
+$pdoStat =$db->prepare('SELECT * FROM vehicule');
+$executeIsOk=$pdoStat->execute();
+$vehicules=$pdoStat->fetchAll();
 
 ?>
  <!-- COTE ADMIN -->
@@ -25,7 +31,7 @@ afficher_liste();
             <th scope="col" >ANNEE </th>
           </tr>
     </thead>
-    <?php foreach($vehicule as $vehicule): ?>
+    <?php foreach($vehicules as $vehicule): ?>
     <tbody class='table'>
   <tr class="thead-light">
   <th scope="col"><?= $vehicule['id_voiture']?></th>

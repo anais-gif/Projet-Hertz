@@ -1,7 +1,9 @@
 <?php 
+     $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
 
-include ('fonction.php');
-  afficher_louer_voiture();
+$pdoStat = $db->prepare('SELECT * FROM louer ');
+$executeIsOk=$pdoStat->execute();
+$louers=$pdoStat->fetchAll();
 ?>
  <!-- COTE ADMIN -->
 <!doctype html>
@@ -20,13 +22,13 @@ include ('fonction.php');
     <table class=' table '>
     <thead class="thead-dark">
           <tr>
-            <th scope="col" >id_cliens </th>
-            <th scope="col" >id_voiture</th>
-            <th scope="col" > date de location </th>
-            <th scope="col" > date de fin location </th>
+            <th scope="col" > ID CLIENT</th>
+            <th scope="col" >ID VOITURE</th>
+            <th scope="col" > DATE DE LOCATION </th>
+            <th scope="col" > DATE FIN DE LOCATION </th>
           </tr>
     </thead>
-    <?php foreach($louer as $louer): ?>
+    <?php foreach($louers as $louer): ?>
     <tbody class='table'>
   <tr class="thead-light">
   <th scope="col" ><?= $louer['id_cliens']?></th>
