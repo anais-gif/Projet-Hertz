@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 29 oct. 2020 à 10:37
+-- Généré le :  lun. 02 nov. 2020 à 15:35
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -30,25 +30,23 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `louer`;
 CREATE TABLE IF NOT EXISTS `louer` (
-  `id_voiture` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_cliens` bigint(20) NOT NULL,
-  `id_louer` varchar(255) DEFAULT NULL,
-  `disponible_louer` varchar(255) DEFAULT NULL,
-  `non_disponible_louer` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_voiture`,`id_cliens`),
-  KEY `FK_louer_id_cliens` (`id_cliens`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `date_de_location` date NOT NULL,
+  `date_fin_de_location` date NOT NULL,
+  `id_cliens` int(11) NOT NULL,
+  `id_voiture` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Contraintes pour les tables déchargées
+-- Déchargement des données de la table `louer`
 --
 
---
--- Contraintes pour la table `louer`
---
-ALTER TABLE `louer`
-  ADD CONSTRAINT `FK_louer_id_cliens` FOREIGN KEY (`id_cliens`) REFERENCES `client` (`id_cliens`),
-  ADD CONSTRAINT `FK_louer_id_voiture` FOREIGN KEY (`id_voiture`) REFERENCES `vehicule` (`id_voiture`);
+INSERT INTO `louer` (`id`, `date_de_location`, `date_fin_de_location`, `id_cliens`, `id_voiture`) VALUES
+(1, '2020-11-10', '2020-11-30', 1, 1),
+(2, '2020-11-13', '2020-11-20', 4, 5),
+(3, '2020-11-06', '2020-11-25', 5, 5),
+(4, '2020-11-06', '2020-11-25', 5, 5);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
