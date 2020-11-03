@@ -97,7 +97,7 @@ include ('fonction.php');
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="afficherlouer.php">Something else here</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -155,9 +155,8 @@ $client=$pdoStat->fetchAll();
                 </tr>
             </tbody>
             <?php endforeach; ?>
+           </table> 
            
-
-        </table> 
     </section>
 
     <hr class='zouper'>
@@ -240,4 +239,39 @@ $vehicule=$pdoStat->fetchAll();
             <?php endforeach; ?>
         </table>
     </section>
+    <?php 
+     $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
+
+$pdoStat = $db->prepare('SELECT * FROM louer
+INNER JOIN client ON client.id_cliens = louer.id_cliens
+     INNER JOIN vehicule ON vehicule.id_voiture = louer.id_voiture ');
+$executeIsOk=$pdoStat->execute();
+$louers=$pdoStat->fetchAll();
+
+?>
+
+<p> Vous avez louer <p>
+    
+    <table class="table col-5">
+    <thead class="thead-dark">
+          <tr>
+            <th scope="col" > nom client</th>
+            <th scope="col" >modèle de la voiture</th>
+            <th scope="col" > DATE DE LOCATION </th>
+            <th scope="col" > DATE FIN DE LOCATION </th>
+          </tr>
+    </thead>
+    <?php foreach($louers as $louer): ?>
+    <tbody class='table'>
+  <tr class="thead-light">
+  <th scope="col-4" ><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
+  <th scope="col-4"><?= $louer['modele_voiture']?></th>
+  <th scope="col-2" ><?= $louer['date_de_location']?></th>
+  <th scope="col-2" ><?= $louer['date_fin_de_location']?></th>
+
+</tr>
+    </tbody>
+    <?php endforeach; ?>
+
+    
 </body>

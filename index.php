@@ -151,7 +151,7 @@ include ('fonction.php');
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin.html">Espace pro</a>
+                    <a class="nav-link" href="admin.php">Espace pro</a>
                 </li>
         </ul>
         </div>
