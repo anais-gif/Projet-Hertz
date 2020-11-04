@@ -20,10 +20,11 @@ include('fonction.php');
         <input type="text" name="modele" placeholder='modele'>
         <input type="text" name="prix" placeholder='prix'>
         <input type="text" name="annee" placeholder='annee'>
+        <input type="text" name="disponible" placeholder='disponible'>
         <button type="submit" value="ajouter" name="action">Ajouter</button>
     </form>
 <?php
-if(isset($_GET['action']) && !empty($_GET['modele'])  && !empty($_GET['prix'])  && !empty($_GET['annee'])){
+if(isset($_GET['action']) && !empty($_GET['modele'])  && !empty($_GET['prix'])  && !empty($_GET['annee']) && !empty($_GET['disponible'])){
     ajouter();
 }
 ?>

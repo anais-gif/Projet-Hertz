@@ -19,12 +19,13 @@ include('fonction.php');
         <input type="text" name="cliens" placeholder='cliens'>
         <input type="text" name="modele" placeholder='modele'>
         <input type="date" name="date_de_location">
-        <input type="date" name="date_fin_de_location">
+        <input type="date" name="date__location">
+        <input type="text" name="disponible"placeholder='disponible'>
        <button type="submit" value="ajouter" name="action">Ajouter</button>
     </form>
 
 <?php
-if(isset($_GET['action']) && !empty($_GET['cliens'])  && !empty($_GET['modele'])  && !empty($_GET['date_de_location'])&& !empty($_GET['date_fin_de_location']) ){
+if(isset($_GET['action']) && !empty($_GET['cliens'])  && !empty($_GET['modele'])  && !empty($_GET['date_de_location'])&& !empty($_GET['date_fin_de_location']) && !empty($_GET['disponible']) ){
       
     ajouter_louer_voiture();
       } 

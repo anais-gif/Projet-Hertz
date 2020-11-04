@@ -17,6 +17,7 @@ include('fonction.php');
 
 <body>
 
+
         <p>Modifier une location <p>
 
         <form method='GET'>

@@ -33,12 +33,14 @@ function bdd(){
 
 function ajouter(){
 
-    $ajouter=bdd()->prepare('INSERT INTO vehicule (modele_voiture,prix_voiture,annee_voiture) VALUES (:modele, :prix, :annee)');
+    $ajouter=bdd()->prepare('INSERT INTO vehicule (modele_voiture,prix_voiture,annee_voiture,disponible) VALUES (:modele, :prix, :annee, :disponible)');
     $ajouter->bindParam(':modele', $_GET['modele'], 
     PDO::PARAM_STR);
     $ajouter->bindParam(':prix', $_GET['prix'], 
     PDO::PARAM_INT);
     $ajouter->bindParam(':annee', $_GET['annee'], 
+    PDO::PARAM_INT);
+    $ajouter->bindParam(':disponible', $_GET['disponible'], 
     PDO::PARAM_INT);
     $plus= $ajouter->execute();
 
@@ -108,7 +110,7 @@ function supprimer(){
 }
 
 function ajouter_louer_voiture(){
-    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (id_cliens,id_voiture,date_de_location,date_fin_de_location) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location)');
+    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (nom_cliens,modele_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
     $ajouter_louer->bindParam(':cliens', $_GET['cliens'], 
     PDO::PARAM_STR);
     $ajouter_louer->bindParam(':modele', $_GET['modele'], 
@@ -116,6 +118,8 @@ function ajouter_louer_voiture(){
     $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
     PDO::PARAM_STR);
     $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], 
     PDO::PARAM_STR);
     $plus_louer=$ajouter_louer->execute();
         if($plus_louer){

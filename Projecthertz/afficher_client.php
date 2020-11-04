@@ -20,6 +20,10 @@ $clients=$pdoStat->fetchAll();
 </head>
 <body>
 
+<p> Entrez une recherche</p>
+<input type="text" name="Mot" size="15">
+<input type="submit" value="Rechercher" alt="Lancer la recherche!">
+
   <table class=' table '>
     <thead class="thead-dark">
           <tr>

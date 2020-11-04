@@ -24,11 +24,12 @@ include('fonction.php');
         <input type="text" name="modele" placeholder="Modele du vehicule">
         <input type="text" name="prix" placeholder="Prix du vehicule">
         <input type="text" name="annee" placeholder="Annee du vehicule">
+        <input type="text" name="disponible" placeholder="disponible">
         <button type="submit" value="modifier" name="action">Modifier</button>
     </form>
 
     <?php 
-    if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee'])){
+    if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee']) && !empty($_GET['disponible'])){
        modifier();
         
         }

@@ -1,9 +1,12 @@
 <?php 
      $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
 
-$pdoStat = $db->prepare('SELECT * FROM louer ');
+$pdoStat = $db->prepare('SELECT * FROM louer 
+INNER JOIN client ON client.id_cliens = louer.id_cliens
+INNER JOIN vehicule ON vehicule.id_voiture = louer.id_voiture');
 $executeIsOk=$pdoStat->execute();
 $louers=$pdoStat->fetchAll();
+
 ?>
  <!-- COTE ADMIN -->
 <!doctype html>
@@ -22,19 +25,19 @@ $louers=$pdoStat->fetchAll();
     <table class=' table '>
     <thead class="thead-dark">
           <tr>
-            <th scope="col" > ID CLIENT</th>
-            <th scope="col" >ID VOITURE</th>
+            <th scope="col" >  NOM</th>
+            <th scope="col" > MODELE</th>
             <th scope="col" > DATE DE LOCATION </th>
             <th scope="col" > DATE FIN DE LOCATION </th>
           </tr>
     </thead>
-    <?php foreach($louers as $louer): ?>
+    <?php foreach($louers as $info): ?>
     <tbody class='table'>
   <tr class="thead-light">
-  <th scope="col" ><?= $louer['id_cliens']?></th>
-  <th scope="col"><?= $louer['id_voiture']?></th>
-  <th scope="col" ><?= $louer['date_de_location']?></th>
-  <th scope="col" ><?= $louer['date_fin_de_location']?></th>
+  <th scope="col" ><?= $info['nom_clients']?></th>
+  <th scope="col"><?= $info['modele_voiture']?></th>
+  <th scope="col" ><?= $info['date_de_location']?></th>
+  <th scope="col" ><?= $info['date_fin_de_location']?></th>
 
 </tr>
     </tbody>

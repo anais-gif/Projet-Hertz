@@ -34,7 +34,7 @@ $vehicules=$pdoStat->fetchAll();
     <?php foreach($vehicules as $vehicule): ?>
     <tbody class='table'>
   <tr class="thead-light">
-  <th scope="col"><?= $vehicule['id_voiture']?></th>
+  <th scope="col"><?= $vehicule['id_clients']?></th>
   <th scope="col" ><?= $vehicule['modele_voiture']?></th>
   <th scope="col"><?= $vehicule['prix_voiture']?></th>
   <th scope="col" ><?= $vehicule['annee_voiture']?></th>
