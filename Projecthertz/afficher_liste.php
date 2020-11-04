@@ -4,9 +4,10 @@
      $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
  
 
-$pdoStat =$db->prepare('SELECT * FROM vehicule');
+$pdoStat =$db->prepare('SELECT * FROM vehicule ');
 $executeIsOk=$pdoStat->execute();
 $vehicules=$pdoStat->fetchAll();
+
 
 ?>
  <!-- COTE ADMIN -->
@@ -29,15 +30,18 @@ $vehicules=$pdoStat->fetchAll();
             <th scope="col" >MODELE </th>
             <th scope="col" >PRIX </th>
             <th scope="col" >ANNEE </th>
+            <th scope="col" >DISPONIBLE </th>
           </tr>
     </thead>
-    <?php foreach($vehicules as $vehicule): ?>
+    <?php foreach($vehicules as $vehicule):
+      if ($vehicule['disponible'] =='1'){$dispo='disponible';} else{$dispo='indisponible';} ?>
     <tbody class='table'>
   <tr class="thead-light">
-  <th scope="col"><?= $vehicule['id_clients']?></th>
+  <th scope="col"><?= $vehicule['id_voiture']?></th>
   <th scope="col" ><?= $vehicule['modele_voiture']?></th>
   <th scope="col"><?= $vehicule['prix_voiture']?></th>
   <th scope="col" ><?= $vehicule['annee_voiture']?></th>
+  <th scope="col" ><?= $dispo ?></th>
 </tr>
     </tbody>
     <?php endforeach; ?>
