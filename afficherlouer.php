@@ -1,3 +1,4 @@
+<?php include ('fonction.php') ?>
 <?php 
      $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
 
@@ -42,7 +43,7 @@ foreach($louers as $info){
 </head>
 
 <body>
-    <p> Vous avez louer <p>
+    <p> Vous avez loué <p>
     
     <table class=' table '>
     <thead class="thead-dark">
@@ -63,7 +64,64 @@ foreach($louers as $info){
 
 </tr>
     </tbody>
+
+    <section id="vehiculesList container-fluid">
+<div class="titretables">
+<center><h2>Liste véhicule</h2></center>
+</div>
+
+<div class="liste">
+<table class="table">
+<thead class="thead">
+<tr class="headtables">
+<th>Marque</th>
+<th>Modèle</th>
+<th>Année</th>
+<th>Disponible</th>
+</tr>
+</thead>
+<tbody>
+<?php
+foreach($result as $produits){
+?>
+<tr>
+<td><?= $produits['modele_voiture'] ?></td>
+<td><?= $produits['prix_voiture'] ?></td>
+<td><?= $produits['annee_voiture'] ?></td>
+<?php
+// echo $idCar[0]['id_car_vehicules'];
+$idCarlouer = $db->query('SELECT id_voiture FROM louer');
+$idCarlouer = $idCarlouer->fetchALL();
+
+for($i=0;$i<count($idCarlouer);$i++){
+$vehiculesRechercher[]=$idCarlouer[$i]['id_voiture'];
+}
+
+if (in_array($produits['id_voiture'],$vehiculesRechercher)){
+echo "<td> <img class='dispo' src='images/close.png'> </td>";
+
+}else {
+echo "<td> <img class='dispo' src='images/check.png'> </td>";
+}
+
+?>
+</tr>
+<?php
+}
+?>
+
+</tbody>
+</table>
+
+</div>
+</section>
+
+
+
+
+
     <?php endforeach; ?>
+    
 
 
     </body>

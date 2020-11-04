@@ -50,13 +50,26 @@
   </nav>
 
 
-  <table width="100%" border="5" cellspacing="0" cellpadding="5">
-    <tr>
-    <td colspan="2">Ligne fusionnée</td>
-    </tr>
-    <tr>
-    <td>Contenu</td>
-    <td>Contenu</td>
-    </tr>
-    </table>
+  <style>
+    #divConteneur{
+    min-height:260px;
+    height:260px;/*pour IE qui comprend rien, et qui ne reconnait pas min-height, mais qui comprend mal height*/
+    min-width:260px;
+    width:260px;/*pour IE qui comprend rien*/
+    overflow:scroll;/*pour activer les scrollbarres*/
+    }
+    </style>
+     
+    <div id="divConteneur">
+        <table id="Table">
+     
+        <tr>
+        <td id="FirstName">First Name</td>
+        <td id="LastName">Last Name</td>
+        <td id="Delete" ></td>
+        </tr>
+     
+        </table>
+    </div>
+     
   </body>

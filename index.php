@@ -89,76 +89,85 @@ include ('fonction.php');
     </header>
 
     <nav class="nav navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
 
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        location de voitures
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Réservez une voiture </a>
-                        <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
-                        <a class="dropdown-item" href="pagetest.html">Nos voitures de location</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Location d'utilitaires
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Offres
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Ma réservation
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Fidélité
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin.php">Espace pro</a>
-                </li>
-        </ul>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    location de voitures
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Réservez une voiture </a>
+                    <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
+                    <a class="dropdown-item" href="pagetest.html">Nos voitures de location</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Location d'utilitaires
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Offres
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Ma réservation
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Fidélité
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php">Espace pro</a>
+            </li>
+            </ul>
         </div>
         </div>
     </nav>
 
     <hr>
+
+    <?php 
+
+$pdoStat =bdd()->prepare('SELECT * FROM vehicule  ');
+$executeIsOk=$pdoStat->execute();
+$vehicule=$pdoStat->fetchAll();
+
+?>
 
     <section class="beau">
         <div class="container">
@@ -188,17 +197,33 @@ include ('fonction.php');
                 <div class="container magic position-relative">
 
 
-                    <div class="container">
-                        <label for="site-search" class="modi d-flex justify-content-center">Modèle de voiture :</label>
-                    </div>
-                    <div class="container fifi">
-                        <input class="megadrole" type="search" id="site-search" name="q"
-                            placeholder="Ton modèle de voiture" aria-label="Search through site content"></div>
-                    <div class="container boutoon">
-                        <button class="boot">Chercher</button></div>
+                    
+                        <table class="table tablemagic">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">MODELE </th>
+                                    <th scope="col">PRIX </th>
+                                    <th scope="col">DISPONIBLE</th>
+                                </tr>
+                            </thead>
+                            <?php foreach($vehicule as $vehicule):
+                                 if ($vehicule['Disponible'] =='0'){$dispo='disponible';} else{$dispo='indisponible';}  ?>
+                            <tbody class='table'>
+                                <tr class="thead-light">
+                                    <th scope="col"><?= $vehicule['modele_voiture']?></th>
+                                    <th scope="col"><?= $vehicule['prix_voiture']?></th>
+                                    <th scope="col" ><?= $dispo ?></th>
+                                </tr>
+                            </tbody>
+                            <?php endforeach; ?>
+                            </table>
+                    
 
                 </div>
             </div>
+
+        </div>
+        </div>
         </div>
         <div class="container">
             <div class="col-sm-12 col-lg-4 col-xl-3 allelujah backeuh">
@@ -207,13 +232,35 @@ include ('fonction.php');
                     fugiat soluta quam id officiis odio excepturi, molestiae ipsa.</p>
             </div>
         </div>
-        <div class="container pecore allelujah"><label for="site-search"
-                class="modi d-flex justify-content-center">Modèle de voiture :</label>
-        <div class="container d-flex  justify-content-center allelujah">
-            <input class="allelujah megadrole justify-content-center" type="search" id="site-search" name="q"
-                placeholder="Ton modèle de voiture" aria-label="Search through site content"></div>
-        <div class="container boutoon allelujah">
-            <button class="allelujah boot ix">Chercher</button></div></div>
+
+        <?php 
+
+$pdoStat =bdd()->prepare('SELECT * FROM vehicule  ');
+$executeIsOk=$pdoStat->execute();
+$vehicule=$pdoStat->fetchAll();
+
+?>
+
+        <div class="container pecore allelujah">  <table class="table tablemagic">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">MODELE </th>
+                                    <th scope="col">PRIX </th>
+                                    <th scope="col">DISPONIBLE</th>
+                                </tr>
+                            </thead>
+                            <?php foreach($vehicule as $vehicule): 
+                                 if ($vehicule['Disponible'] =='0'){$dispo='Disponible';} else{$dispo='indisponible';}?>
+                            <tbody class='table'>
+                                <tr class="thead-light">
+                                    <th scope="col"><?= $vehicule['modele_voiture']?></th>
+                                    <th scope="col"><?= $vehicule['prix_voiture']?></th>
+                                    <th scope="col" ><?= $dispo ?></th>
+                                </tr>
+                            </tbody>
+                            <?php endforeach; ?>
+                            </table></div>
+        </div>
 
 
 
@@ -232,9 +279,15 @@ include ('fonction.php');
                 </div>
                 <div class="col-4">
                     <h2>A propos de Hertz</h2>
+                    <p class="tfi">Réserver</p>
+                    <p class="tfi">Nos offres spéciales</p>
+                    <p class="tfi">Notre flotte</p>
                 </div>
                 <div class="col-4">
                     <h2>Assistance</h2>
+                    <p class="tfi">Réserver</p>
+                    <p class="tfi">Nos offres spéciales</p>
+                    <p class="tfi">Notre flotte</p>
                 </div>
             </div>
         </div>

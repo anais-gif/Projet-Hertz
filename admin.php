@@ -132,7 +132,7 @@ $client=$pdoStat->fetchAll();
 
     <section class="tableau">
 
-        <table class="table col-5 ">
+        <table class="table col-sm-1 ">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID </th>
@@ -159,20 +159,22 @@ $client=$pdoStat->fetchAll();
            
     </section>
 
-    <hr class='zouper'>
 
 
 
     <?php 
 
-$pdoStat =bdd()->prepare('SELECT * FROM vehicule');
+$pdoStat =bdd()->prepare('SELECT * FROM vehicule  ');
 $executeIsOk=$pdoStat->execute();
-$vehicule=$pdoStat->fetchAll();
+$vehicules=$pdoStat->fetchAll();
+
+
+    
 
 ?>
 
     <section class="disponibilite">
-        <p class=" d-flex justify-content-center  ">Voitures disponibles</p>
+
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -203,7 +205,7 @@ $vehicule=$pdoStat->fetchAll();
 
             <?php 
     if(isset($_GET['action']) && $_GET['action']=="supprimer" && !empty($_GET['id'])){
-        
+    
         supprimer();
     }
     ?>
@@ -225,15 +227,18 @@ $vehicule=$pdoStat->fetchAll();
                     <th scope="col">MODELE </th>
                     <th scope="col">PRIX </th>
                     <th scope="col">ANNEE </th>
+                    <th scope="col">DISPONIBLE</th>
                 </tr>
             </thead>
-            <?php foreach($vehicule as $vehicule): ?>
+            <?php foreach($vehicules as $vehicule):
+                if ($vehicule['Disponible'] =='0'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
             <tbody class='table'>
                 <tr class="thead-light">
                     <th scope="col"><?= $vehicule['id_voiture']?></th>
                     <th scope="col"><?= $vehicule['modele_voiture']?></th>
                     <th scope="col"><?= $vehicule['prix_voiture']?></th>
                     <th scope="col"><?= $vehicule['annee_voiture']?></th>
+                    <th scope="col" ><?= $dispo ?></th>
                 </tr>
             </tbody>
             <?php endforeach; ?>
@@ -248,9 +253,10 @@ INNER JOIN client ON client.id_cliens = louer.id_cliens
 $executeIsOk=$pdoStat->execute();
 $louers=$pdoStat->fetchAll();
 
+
 ?>
 
-<p> Vous avez louer <p>
+<p> Vous avez loué <p>
     
     <table class="table col-5">
     <thead class="thead-dark">
