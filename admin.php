@@ -133,31 +133,33 @@ $client=$pdoStat->fetchAll();
     <section class="tableau">
         <div class="container overflow-auto">
             <div class="row">
-            <table class="table col-sm-1 ">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID </th>
-                        <th scope="col">ADRRESSE </th>
-                        <th scope="col">NOM </th>
-                        <th scope="col">PRENOM </th>
-                        <th scope="col"> VILLE</th>
-                        <th scope="col"> CODE POSTAL</th>
-                        <th scope="col"> Détails</th>
-                    </tr>
-                </thead>
-                <?php foreach($client as $client): ?>
-                <tbody class='table'>
-                    <tr class="thead-light">
-                        <th scope="col"><?= $client['id_cliens']?></th>
-                        <th scope="col"><?= $client['adresse_clients']?></th>
-                        <th scope="col"><?= $client['nom_clients']?></th>
-                        <th scope="col"><?= $client['prenom_clients']?></th>
-                        <th scope="col"><?= $client['ville_clients']?></th>
-                        <th scope="col"><?= $client['cp_cliens']?></th>
-                    </tr>
-                </tbody>
-                <?php endforeach; ?>
-            </table>
+                <table class="table col-sm-1 ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID </th>
+                            <th scope="col">ADRRESSE </th>
+                            <th scope="col">NOM </th>
+                            <th scope="col">PRENOM </th>
+                            <th scope="col"> VILLE</th>
+                            <th scope="col"> CODE POSTAL</th>
+                            <th scope="col"> Détails</th>
+                        </tr>
+                    </thead>
+                    <?php foreach($client as $client): ?>
+                    <tbody class='table'>
+                        <tr class="thead-light">
+                            <th scope="col"><?= $client['id_cliens']?></th>
+                            <th scope="col"><?= $client['adresse_clients']?></th>
+                            <th scope="col"><?= $client['nom_clients']?></th>
+                            <th scope="col"><?= $client['prenom_clients']?></th>
+                            <th scope="col"><?= $client['ville_clients']?></th>
+                            <th scope="col"><?= $client['cp_cliens']?></th>
+                            <th scope="col" class="col"><button>Historique</button></th>
+                        </tr>
+                    </tbody>
+                    <?php endforeach; ?>
+                </table>
+                 </div>
     </section>
 
 
@@ -256,8 +258,9 @@ $louers=$pdoStat->fetchAll();
 
 ?>
 
-    
-            <div class="container"><p> Vous avez loué <p>
+
+    <div class="container">
+        <p> Vous avez loué <p>
                 <table class="table col-5">
                     <thead class="thead-dark">
                         <tr>
@@ -280,17 +283,18 @@ $louers=$pdoStat->fetchAll();
                         </tr>
                     </tbody>
                     <?php endforeach; ?>
-                    <div class="col-7"> <form method='GET'>
-        <input type="text" name="id" placeholder='id'>
-        <input type="text" name="id_cliens" placeholder='id_cliens'>
-        <input type="text" name="id_voiture" placeholder='id-voiture'>
-        <input type="date" name="date_de_location">
-        <input type="date" name="date_fin_de_location">
-        <input type="number" name="disponible">
-        <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
-    </form>
+                    <div class="col-7">
+                        <form method='GET'>
+                            <input type="text" name="id" placeholder='id'>
+                            <input type="text" name="id_cliens" placeholder='id_cliens'>
+                            <input type="text" name="id_voiture" placeholder='id-voiture'>
+                            <input type="date" name="date_de_location">
+                            <input type="date" name="date_fin_de_location">
+                            <input type="number" name="disponible">
+                            <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
+                        </form>
 
-    <?php 
+                        <?php 
     if(isset($_GET['action_louer']) && $_GET['action_louer']=="modifier_louer" && !empty($_GET['id'])  && !empty($_GET['id_cliens']) 
      && !empty($_GET['id_voiture'])  && !empty($_GET['disponible'])&& !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
        modifier_louer();
@@ -298,7 +302,8 @@ $louers=$pdoStat->fetchAll();
         }
       
     
-?></div>
-            </div>
+?>
+                    </div>
+    </div>
 
 </body>
