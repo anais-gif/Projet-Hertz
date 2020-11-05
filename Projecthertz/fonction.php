@@ -143,7 +143,8 @@ function modifier_louer(){
 
 function modifier_client(){
 
-    $modifier_client =  bdd()->prepare('UPDATE client SET nom_clients = :nom, adresse_clients=:adresse, prenom_clients=:prenom, ville_clients=:ville, cp_cliens=:cp, pseudo=:pseudo, mdp=:mdp WHERE id_cliens=:id');
+    $modifier_client =  bdd()->prepare('UPDATE client SET nom_clients = :nom, adresse_clients=:adresse, prenom_clients=:prenom, 
+    ville_clients=:ville, cp_cliens=:cp, pseudo=:pseudo, mdp=:mdp WHERE id_cliens=:id');
         $modifier_client->bindParam(':id', $_GET['id'], PDO::PARAM_STR);
         $modifier_client->bindParam(':nom', $_GET['nom'], PDO::PARAM_STR);
         $modifier_client->bindParam(':prenom', $_GET['prenom'], PDO::PARAM_STR);        
@@ -178,6 +179,21 @@ function supprimer(){
             } else {
                 echo 'Veuillez recommencer svp, une erreur est survenue';
             }
+        }
+                                                       // SUPPRIMER CLIENT//
+function  supprimer_client(){
+    $supprimer_client =  bdd()->prepare('DELETE FROM client WHERE id_cliens = :id');
+        $supprimer_client->bindParam(':id', $_GET['id'],PDO::PARAM_STR);
+
+
+        $supprimer_client = $supprimer_client->execute();
+            if($supprimer_client){
+                echo 'votre enregistrement a bien été supprimé';
+                
+            
+            } else {
+                echo 'Veuillez recommencer svp, une erreur est survenue';
+            }
 }
                                                         // HISTORIQUE//
 
@@ -187,7 +203,9 @@ function historique(){
     $prenom_clients = $_GET['prenom'];
     $client = $_GET['id_cliens'];
 
-    $recup= $db->prepare('SELECT client.id_cliens, client.nom_clients, prenom_clients, modele_voiture, date_de_location, date_fin_de_location FROM client INNER JOIN louer ON client.id_cliens = louer.id_cliens INNER JOIN vehicule ON louer.id_voiture = vehicule.id_voiture WHERE client.id_cliens = :client');
+    $recup= $db->prepare('SELECT client.id_cliens, client.nom_clients, prenom_clients, modele_voiture, date_de_location, 
+    date_fin_de_location FROM client INNER JOIN louer ON client.id_cliens = louer.id_cliens INNER JOIN vehicule ON 
+    louer.id_voiture = vehicule.id_voiture WHERE client.id_cliens = :client');
     $recup->bindParam(':client', $client);
     $recup->execute();
     
