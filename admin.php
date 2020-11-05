@@ -131,32 +131,39 @@ $client=$pdoStat->fetchAll();
 
 
     <section class="tableau">
-
-        <table class="table col-sm-1 ">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID </th>
-                    <th scope="col">ADRRESSE </th>
-                    <th scope="col">NOM </th>
-                    <th scope="col">PRENOM </th>
-                    <th scope="col"> VILLE</th>
-                    <th scope="col"> CODE POSTAL</th>
-                </tr>
-            </thead>
-            <?php foreach($client as $client): ?>
-            <tbody class='table'>
-                <tr class="thead-light">
-                    <th scope="col"><?= $client['id_cliens']?></th>
-                    <th scope="col"><?= $client['adresse_clients']?></th>
-                    <th scope="col"><?= $client['nom_clients']?></th>
-                    <th scope="col"><?= $client['prenom_clients']?></th>
-                    <th scope="col"><?= $client['ville_clients']?></th>
-                    <th scope="col"><?= $client['cp_cliens']?></th>
-                </tr>
-            </tbody>
-            <?php endforeach; ?>
-           </table> 
-           
+        <div class="container overflow-auto">
+            <div class="row">
+            <table class="table col-sm-1 ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID </th>
+                        <th scope="col">ADRRESSE </th>
+                        <th scope="col">NOM </th>
+                        <th scope="col">PRENOM </th>
+                        <th scope="col"> VILLE</th>
+                        <th scope="col"> CODE POSTAL</th>
+                    </tr>
+                </thead>
+                <?php foreach($client as $client): ?>
+                <tbody class='table'>
+                    <tr class="thead-light">
+                        <th scope="col"><?= $client['id_cliens']?></th>
+                        <th scope="col"><?= $client['adresse_clients']?></th>
+                        <th scope="col"><?= $client['nom_clients']?></th>
+                        <th scope="col"><?= $client['prenom_clients']?></th>
+                        <th scope="col"><?= $client['ville_clients']?></th>
+                        <th scope="col"><?= $client['cp_cliens']?></th>
+                    </tr>
+                </tbody>
+                <?php endforeach; ?>
+            </table>
+            <div class="col-5 d-flex justify-content-between">
+                <button>Lol</button>
+                <button>Lol</button>
+                <button>Lol</button>
+                </div>
+                </div>
+        </div>
     </section>
 
 
@@ -175,7 +182,7 @@ $vehicules=$pdoStat->fetchAll();
 
     <section class="disponibilite">
 
-        <div class="container">
+        <div class="container overflow-auto">
             <div class="row">
                 <div class="col-4">
                     <form method='GET'>
@@ -202,16 +209,14 @@ $vehicules=$pdoStat->fetchAll();
                     </form>
                 </div>
             </div>
-
-            <?php 
+        </div>
+        <?php 
     if(isset($_GET['action']) && $_GET['action']=="supprimer" && !empty($_GET['id'])){
     
         supprimer();
     }
     ?>
-        </div>
-        </div>
-        </div>
+
         <?php 
     if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee'])){
        
@@ -219,31 +224,32 @@ $vehicules=$pdoStat->fetchAll();
         }
     
 ?>
-
-        <table class=' table '>
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID </th>
-                    <th scope="col">MODELE </th>
-                    <th scope="col">PRIX </th>
-                    <th scope="col">ANNEE </th>
-                    <th scope="col">DISPONIBLE</th>
-                </tr>
-            </thead>
-            <?php foreach($vehicules as $vehicule):
+        <div class="container ">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID </th>
+                        <th scope="col">MODELE </th>
+                        <th scope="col">PRIX </th>
+                        <th scope="col">ANNEE </th>
+                        <th scope="col">DISPONIBLE</th>
+                    </tr>
+                </thead>
+                <?php foreach($vehicules as $vehicule):
                 if ($vehicule['Disponible'] =='0'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
-            <tbody class='table'>
-                <tr class="thead-light">
-                    <th scope="col"><?= $vehicule['id_voiture']?></th>
-                    <th scope="col"><?= $vehicule['modele_voiture']?></th>
-                    <th scope="col"><?= $vehicule['prix_voiture']?></th>
-                    <th scope="col"><?= $vehicule['annee_voiture']?></th>
-                    <th scope="col" ><?= $dispo ?></th>
-                </tr>
-            </tbody>
-            <?php endforeach; ?>
-        </table>
+                <tbody class='table'>
+                    <tr class="thead-light">
+                        <th scope="col"><?= $vehicule['id_voiture']?></th>
+                        <th scope="col"><?= $vehicule['modele_voiture']?></th>
+                        <th scope="col"><?= $vehicule['prix_voiture']?></th>
+                        <th scope="col"><?= $vehicule['annee_voiture']?></th>
+                        <th scope="col"><?= $dispo ?></th>
+                    </tr>
+                </tbody>
+                <?php endforeach; ?>
+            </table>
     </section>
+    </div>
     <?php 
      $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
 
@@ -256,28 +262,28 @@ $louers=$pdoStat->fetchAll();
 
 ?>
 
-<p> Vous avez loué <p>
     
-    <table class="table col-5">
-    <thead class="thead-dark">
-          <tr>
-            <th scope="col" > nom client</th>
-            <th scope="col" >modèle de la voiture</th>
-            <th scope="col" > DATE DE LOCATION </th>
-            <th scope="col" > DATE FIN DE LOCATION </th>
-          </tr>
-    </thead>
-    <?php foreach($louers as $louer): ?>
-    <tbody class='table'>
-  <tr class="thead-light">
-  <th scope="col-4" ><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
-  <th scope="col-4"><?= $louer['modele_voiture']?></th>
-  <th scope="col-2" ><?= $louer['date_de_location']?></th>
-  <th scope="col-2" ><?= $louer['date_fin_de_location']?></th>
+            <div class="container"><p> Vous avez loué <p>
+                <table class="table col-5">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> nom client</th>
+                            <th scope="col">modèle de la voiture</th>
+                            <th scope="col"> DATE DE LOCATION </th>
+                            <th scope="col"> DATE FIN DE LOCATION </th>
+                        </tr>
+                    </thead>
+                    <?php foreach($louers as $louer): ?>
+                    <tbody class='table'>
+                        <tr class="thead-light">
+                            <th scope="col-4"><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
+                            <th scope="col-4"><?= $louer['modele_voiture']?></th>
+                            <th scope="col-2"><?= $louer['date_de_location']?></th>
+                            <th scope="col-2"><?= $louer['date_fin_de_location']?></th>
 
-</tr>
-    </tbody>
-    <?php endforeach; ?>
+                        </tr>
+                    </tbody>
+                    <?php endforeach; ?>
+            </div>
 
-    
 </body>
