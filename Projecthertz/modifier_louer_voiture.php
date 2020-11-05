@@ -1,7 +1,8 @@
 <?php 
 
 include('fonction.php');
-  
+
+
 ?>
 <!-- COTE ADMIN -->
 
@@ -21,17 +22,21 @@ include('fonction.php');
         <p>Modifier une location <p>
 
         <form method='GET'>
-        <input type="text" name="cliens" placeholder='cliens'>
-        <input type="text" name="modele" placeholder='modele'>
+        <input type="text" name="id" placeholder='id'>
+        <input type="text" name="id_cliens" placeholder='id_cliens'>
+        <input type="text" name="id_voiture" placeholder='id-voiture'>
         <input type="date" name="date_de_location">
         <input type="date" name="date_fin_de_location">
-        <button type="submit" value="modifier" name="action">Modifier</button>
+        <input type="number" name="disponible">
+        <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
     </form>
 
     <?php 
-    if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['cliens'])  && !empty($_GET['modele']) && !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
-       modifier();
+    if(isset($_GET['action_louer']) && $_GET['action_louer']=="modifier_louer" && !empty($_GET['id'])  && !empty($_GET['id_cliens']) 
+     && !empty($_GET['id_voiture'])  && !empty($_GET['disponible'])&& !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
+       modifier_louer();
         
         }
+      
     
 ?>
