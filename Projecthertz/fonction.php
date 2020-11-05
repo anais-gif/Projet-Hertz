@@ -30,7 +30,7 @@ function bdd(){
 //     $louers=$pdoStat->fetchAll();
     
 //  }
-
+                                                        // AJOUTER VEHICULE//
 function ajouter(){
 
     $ajouter=bdd()->prepare('INSERT INTO vehicule (modele_voiture,prix_voiture,annee_voiture,disponible) VALUES (:modele, :prix, :annee, :disponible)');
@@ -50,6 +50,7 @@ function ajouter(){
             echo 'Une erreur est survenue';
         }
 }
+                                                        // AJOUTER CLIENT//
 
 function ajouter_client(){
 
@@ -65,9 +66,9 @@ function ajouter_client(){
     $ajouter_client->bindParam(':cp', $_GET['cp'], 
     PDO::PARAM_INT);
     $ajouter_client->bindParam(':pseudo', $_GET['pseudo'], 
-    PDO::PARAM_INT);
+    PDO::PARAM_STR);
     $ajouter_client->bindParam(':mdp', $_GET['mdp'], 
-    PDO::PARAM_INT);
+    PDO::PARAM_STR);
     $plus_client= $ajouter_client->execute();
 
         if($plus_client){
@@ -76,7 +77,27 @@ function ajouter_client(){
             echo 'Une erreur est survenue';
         }
 }
-
+                                                        // AJOUTER LOCATION//
+function ajouter_louer_voiture(){
+    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (nom_cliens,modele_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
+    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':modele', $_GET['modele'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
+    PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], 
+    PDO::PARAM_STR);
+    $plus_louer=$ajouter_louer->execute();
+        if($plus_louer){
+            echo 'votre enregistrement a été ajouté';
+        } else {
+            echo 'Une erreur est survenue';
+        }
+}
+                                                        // MODIFIER  VEHICULE//
 
 function modifier(){
 
@@ -97,6 +118,8 @@ function modifier(){
                 echo 'Veuillez recommencer svp, une erreur est survenue';
             }
 }
+                                                        // MODIFIER LOCATION//
+
 function modifier_louer(){
 
     $modifier_louer =  bdd()->prepare('UPDATE louer SET id_cliens=:id_cliens, id_voiture=:id_voiture, 
@@ -115,6 +138,7 @@ function modifier_louer(){
         }
 }
 
+                                                        // MODIFIER CLIENTS//
 
 
 function modifier_client(){
@@ -139,6 +163,7 @@ function modifier_client(){
                 echo 'Veuillez recommencer svp, une erreur est survenue';
             }
 }
+                                                        // SUPPRIMER VEHICULE//
 
 function supprimer(){
     $supprimer =  bdd()->prepare('DELETE FROM vehicule WHERE id_voiture = :id');
@@ -154,25 +179,27 @@ function supprimer(){
                 echo 'Veuillez recommencer svp, une erreur est survenue';
             }
 }
+                                                        // HISTORIQUE//
 
-function ajouter_louer_voiture(){
-    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (nom_cliens,modele_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
-    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':modele', $_GET['modele'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], 
-    PDO::PARAM_STR);
-    $plus_louer=$ajouter_louer->execute();
-        if($plus_louer){
-            echo 'votre enregistrement a été ajouté';
-        } else {
-            echo 'Une erreur est survenue';
-        }
+function historique(){
+    if(isset($_GET['action']) && $_GET['action']=="historique"){
+    $nom_cliens = $_GET['nom'];
+    $prenom_clients = $_GET['prenom'];
+    $client = $_GET['id_cliens'];
+
+    $recup= $db->prepare('SELECT client.id_cliens, client.nom_clients, prenom_clients, modele_voiture, date_de_location, date_fin_de_location FROM client INNER JOIN louer ON client.id_cliens = louer.id_cliens INNER JOIN vehicule ON louer.id_voiture = vehicule.id_voiture WHERE client.id_cliens = :client');
+    $recup->bindParam(':client', $client);
+    $recup->execute();
+    
+    
+    while($donnees = $recup->fetch())
+    {
+    echo '</td><td>'.$donnees['modele_voiture'].'</td><td>'.$donnees['date_de_location'].'</td><td>'.$donnees['date_fin_de_location'].'</td></tr>';
+    }
+    echo'</tbody></table></div>';
+    }
 }
+
+
 
 ?>

@@ -1,16 +1,21 @@
  <?php 
-  $db = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
+   include('fonction.php');
 
-  
-  $lister = $db->prepare('SELECT * FROM client
-     INNER JOIN louer ON client.id = louer.id_client
-     INNER JOIN vehicule ON louer.id_vehicule= voiture.id 
-     WHERE client.id = 1');
-  
-  
-    $lister = $lister->fetchAll(PDO::FETCH_ASSOC);
-   
-    foreach($lister as $info){
-        echo "<br/>".$info['prenom']." ".$info['nom_client']." a loué ".$info['nom_film']." du ".$info['date_dbt_location']." au ".$info['date_fin_location'];
-    }
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method='get'>
+    <input type='text' name='nom' >
+    <input type='text' name='prenom' >
+    <input type='text' name='id_cliens' >
+    <button type='submit' name='action' value='historique'>historique</button><div><table>
+</form>
+</body>
+</html>

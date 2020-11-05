@@ -2,7 +2,8 @@
 include('fonction.php');
 
 if(isset($_GET['action']) &&!empty($_GET['nom']) && !empty($_GET['prenom'])&& !empty($_GET['adresse']) && !empty($_GET['ville'])&& !empty($_GET['cp']) && !empty($_GET['pseudo']) &&!empty($_GET['mdp']))
-    {ajouter_client();
+    {
+        ajouter_client();
     }
 
 ?>
