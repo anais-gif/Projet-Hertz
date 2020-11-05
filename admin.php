@@ -142,6 +142,7 @@ $client=$pdoStat->fetchAll();
                         <th scope="col">PRENOM </th>
                         <th scope="col"> VILLE</th>
                         <th scope="col"> CODE POSTAL</th>
+                        <th scope="col"> Détails</th>
                     </tr>
                 </thead>
                 <?php foreach($client as $client): ?>
@@ -157,13 +158,6 @@ $client=$pdoStat->fetchAll();
                 </tbody>
                 <?php endforeach; ?>
             </table>
-            <div class="col-5 d-flex justify-content-between">
-                <button>Lol</button>
-                <button>Lol</button>
-                <button>Lol</button>
-                </div>
-                </div>
-        </div>
     </section>
 
 
@@ -271,19 +265,40 @@ $louers=$pdoStat->fetchAll();
                             <th scope="col">modèle de la voiture</th>
                             <th scope="col"> DATE DE LOCATION </th>
                             <th scope="col"> DATE FIN DE LOCATION </th>
+                            <th scope="col">Disponible</th>
                         </tr>
                     </thead>
                     <?php foreach($louers as $louer): ?>
                     <tbody class='table'>
                         <tr class="thead-light">
-                            <th scope="col-4"><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
-                            <th scope="col-4"><?= $louer['modele_voiture']?></th>
-                            <th scope="col-2"><?= $louer['date_de_location']?></th>
-                            <th scope="col-2"><?= $louer['date_fin_de_location']?></th>
+                            <th scope="col"><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
+                            <th scope="col"><?= $louer['modele_voiture']?></th>
+                            <th scope="col"><?= $louer['date_de_location']?></th>
+                            <th scope="col"><?= $louer['date_fin_de_location']?></th>
+                            <th scope="col"><?= $louer['disponible']?></th>
 
                         </tr>
                     </tbody>
                     <?php endforeach; ?>
+                    <div class="col-7"> <form method='GET'>
+        <input type="text" name="id" placeholder='id'>
+        <input type="text" name="id_cliens" placeholder='id_cliens'>
+        <input type="text" name="id_voiture" placeholder='id-voiture'>
+        <input type="date" name="date_de_location">
+        <input type="date" name="date_fin_de_location">
+        <input type="number" name="disponible">
+        <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
+    </form>
+
+    <?php 
+    if(isset($_GET['action_louer']) && $_GET['action_louer']=="modifier_louer" && !empty($_GET['id'])  && !empty($_GET['id_cliens']) 
+     && !empty($_GET['id_voiture'])  && !empty($_GET['disponible'])&& !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
+       modifier_louer();
+        
+        }
+      
+    
+?></div>
             </div>
 
 </body>

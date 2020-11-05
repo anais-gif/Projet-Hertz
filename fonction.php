@@ -44,20 +44,24 @@ function ajouter(){
 
 function ajouter_client(){
 
-    $ajouter = bdd()->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens) VALUES (:adresse, :nom, :prenom, :ville, :cp)');
-    $ajouter->bindParam(':adresse', $_GET['adresse'], 
+    $ajouter_client = bdd()->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens,pseudo,mdp) VALUES (:adresse, :nom, :prenom, :ville, :cp ,:pseudo ,:mdp)');
+    $ajouter_client->bindParam(':adresse', $_GET['adresse'], 
     PDO::PARAM_STR);
-    $ajouter->bindParam(':nom', $_GET['nom'], 
+    $ajouter_client->bindParam(':nom', $_GET['nom'], 
     PDO::PARAM_STR);
-    $ajouter->bindParam(':prenom', $_GET['prenom'], 
+    $ajouter_client->bindParam(':prenom', $_GET['prenom'], 
     PDO::PARAM_STR);
-    $ajouter->bindParam(':ville', $_GET['ville'], 
+    $ajouter_client->bindParam(':ville', $_GET['ville'], 
     PDO::PARAM_STR);
-    $ajouter->bindParam(':cp', $_GET['cp'], 
+    $ajouter_client->bindParam(':cp', $_GET['cp'], 
     PDO::PARAM_INT);
-    $plus= $ajouter->execute();
+    $ajouter_client->bindParam(':pseudo', $_GET['pseudo'], 
+    PDO::PARAM_STR);
+    $ajouter_client->bindParam(':mdp', $_GET['mdp'], 
+    PDO::PARAM_STR);
+    $plus_client= $ajouter_client->execute();
 
-        if($plus){
+        if($plus_client){
             echo 'votre enregistrement a été ajouté';
         } else {
             echo 'Une erreur est survenue';
@@ -100,4 +104,29 @@ function supprimer(){
             }
 }
 
+function modifier_louer(){
+
+    $modifier_louer =  bdd()->prepare('UPDATE louer SET id_cliens=:id_cliens, id_voiture=:id_voiture, 
+    date_de_location=:date_de_location, date_fin_de_location=:date_fin_de_location, disponible=:disponible WHERE id=:id');
+    $modifier_louer->bindParam(':id', $_GET['id'], PDO::PARAM_INT); 
+    $modifier_louer->bindParam(':id_cliens', $_GET['id_cliens'], PDO::PARAM_INT);
+    $modifier_louer->bindParam(':id_voiture', $_GET['id_voiture'], PDO::PARAM_INT);
+    $modifier_louer->bindParam(':date_de_location', $_GET['date_de_location'],PDO::PARAM_STR);
+    $modifier_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'],PDO::PARAM_STR);
+    $modifier_louer->bindParam(':disponible', $_GET['disponible'], PDO::PARAM_INT);
+    $plus_modifier=$modifier_louer->execute();
+        if($plus_modifier){
+            echo 'votre enregistrement a été ajouté';
+        } else {
+            echo 'Une erreur est survenue';
+        }
+}
+
+function refresh(){
+    $delai=1; 
+    $url='#';
+    header("Refresh: $delai;url=$url");
+}
+
 ?>
+

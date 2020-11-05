@@ -4,12 +4,7 @@ include ('fonction.php');
   
 ?>
 
-<?php if(isset($_GET['action']) && !empty($_GET['adresse'])  && !empty($_GET['nom'])  && !empty($_GET['prenom'])&& !empty($_GET['ville']) && !empty($_GET['cp'])   ){
-   
-   ajouter_client();
-      }
-    
-  ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +41,12 @@ include ('fonction.php');
                 <div class="col-12 col-md-3">
                     <a href="#" class="btnPopup" id="btnPopup">Se connecter/S'inscrire</a>
 
+
+<?php if(isset($_GET['action']) &&!empty($_GET['nom']) && !empty($_GET['prenom'])&& !empty($_GET['adresse']) && !empty($_GET['ville'])&& !empty($_GET['cp']) && !empty($_GET['pseudo']) &&!empty($_GET['mdp']))
+    {ajouter_client();
+    }
+
+  ?>
                     <!--PopUp-->
                     <div id="overlay" class="overlay">
                         <div id="popup" class="popup">
@@ -58,11 +59,13 @@ include ('fonction.php');
                                     </div>
                                     <div class="bloc2">
                                         <form method='GET'>
-                                            <input class="pretent" type="text" name="nom" placeholder='nom'>
-                                            <input class="pretent" type="text" name="prenom" placeholder='prenom'>
-                                            <input class="pretent" type="text" name="adresse" placeholder='adresse'>
-                                            <input class="pretent" type="text" name="ville" placeholder='ville'>
-                                            <input class="pretent" type="text" name="cp" placeholder='cp'>
+                                            <input class="pretent" type="text" name="nom"  placeholder='nom'required>
+                                            <input class="pretent" type="text"  name="prenom"  placeholder='prenom' required>
+                                            <input class="pretent" type="text"  name="adresse"  placeholder='adresse' required>
+                                            <input class="pretent" type="text"  name="ville"  placeholder='ville' required>
+                                            <input class="pretent" type="text"  name="cp"  placeholder='cp' required>
+                                            <input class="pretent" type="text"  name="pseudo"  placeholder='pseudo' required>
+                                            <input class="pretent" type="password" " name="mdp"  placeholder='mot de passe' required>
                                             <br>
                                             <button class="boubou" type="submit" value="ajouter"
                                                 name="action">Ajouter</button>
@@ -168,6 +171,7 @@ $executeIsOk=$pdoStat->execute();
 $vehicule=$pdoStat->fetchAll();
 
 ?>
+
 
     <section class="beau">
         <div class="container">
