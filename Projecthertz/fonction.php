@@ -55,20 +55,13 @@ function ajouter(){
 function ajouter_client(){
 
     $ajouter_client = bdd()->prepare('INSERT INTO client (adresse_clients,nom_clients,prenom_clients,ville_clients,cp_cliens,pseudo,mdp) VALUES (:adresse, :nom, :prenom, :ville, :cp ,:pseudo ,:mdp)');
-    $ajouter_client->bindParam(':adresse', $_GET['adresse'], 
-    PDO::PARAM_STR);
-    $ajouter_client->bindParam(':nom', $_GET['nom'], 
-    PDO::PARAM_STR);
-    $ajouter_client->bindParam(':prenom', $_GET['prenom'], 
-    PDO::PARAM_STR);
-    $ajouter_client->bindParam(':ville', $_GET['ville'], 
-    PDO::PARAM_STR);
-    $ajouter_client->bindParam(':cp', $_GET['cp'], 
-    PDO::PARAM_INT);
-    $ajouter_client->bindParam(':pseudo', $_GET['pseudo'], 
-    PDO::PARAM_STR);
-    $ajouter_client->bindParam(':mdp', $_GET['mdp'], 
-    PDO::PARAM_STR);
+    $ajouter_client->bindParam(':adresse', $_GET['adresse'], PDO::PARAM_STR);
+    $ajouter_client->bindParam(':nom', $_GET['nom'],  PDO::PARAM_STR);
+    $ajouter_client->bindParam(':prenom', $_GET['prenom'],  PDO::PARAM_STR);
+    $ajouter_client->bindParam(':ville', $_GET['ville'], PDO::PARAM_STR);
+    $ajouter_client->bindParam(':cp', $_GET['cp'], PDO::PARAM_INT);
+    $ajouter_client->bindParam(':pseudo', $_GET['pseudo'], PDO::PARAM_STR);
+    $ajouter_client->bindParam(':mdp', $_GET['mdp'],  PDO::PARAM_STR);
     $plus_client= $ajouter_client->execute();
 
         if($plus_client){
@@ -80,16 +73,11 @@ function ajouter_client(){
                                                         // AJOUTER LOCATION//
 function ajouter_louer_voiture(){
     $ajouter_louer =  bdd()->prepare('INSERT INTO louer (id_cliens,id_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
-    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], 
-    PDO::PARAM_INT);
-    $ajouter_louer->bindParam(':modele', $_GET['modele'], 
-    PDO::PARAM_INT);
-    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
-    PDO::PARAM_STR);
-    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], 
-    PDO::PARAM_INT);
+    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], PDO::PARAM_INT);
+    $ajouter_louer->bindParam(':modele', $_GET['modele'], PDO::PARAM_INT);
+    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], PDO::PARAM_INT);
     $plus_louer=$ajouter_louer->execute();
         if($plus_louer){
             echo 'votre enregistrement a été ajouté';
