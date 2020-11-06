@@ -98,8 +98,25 @@ $louers=$pdoStat->fetchAll();
         </div>
         </div>
     </nav>
-
-
+    <hr>
+    <div class="container">
+        <div class='col-8'>
+                <form method='GET'>
+                <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">Id</span>
+  </div>
+                    <input class="form-control" type="text" name="id" placeholder='id'>
+                    <input class="form-control" ' type="text" name="id_cliens" placeholder='id_cliens'>
+                    <input class="form-control"  type="text" name="id_voiture" placeholder='id-voiture'></div>
+                    <div class="input-group-prepend">
+   <div class='col-8'> <span class="input-group-text" id="">Date</span>
+                    <input class="form-control" type="date" name="date_de_location">
+                    <input class="form-control"  type="date" name="date_fin_de_location">
+                    <input class="form-control"  type="number" name="disponible">
+                    <button  type="submit" value="modifier_louer" name="action_louer">Modifier</button>
+                </form></div>
+            </div>
     <div class="container overflow-auto">
 
         <table class="table col-12 ">
@@ -115,7 +132,7 @@ $louers=$pdoStat->fetchAll();
             <?php foreach($louers as $louer): ?>
             <tbody class='table'>
                 <tr class="thead-light">
-                    <th scope="col"><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
+                    <th scope="col"><?= $louer['nom_clients'].' '?></th>
                     <th scope="col"><?= $louer['modele_voiture']?></th>
                     <th scope="col"><?= $louer['date_de_location']?></th>
                     <th scope="col"><?= $louer['date_fin_de_location']?></th>
@@ -124,18 +141,25 @@ $louers=$pdoStat->fetchAll();
                 </tr>
             </tbody>
             <?php endforeach; ?>
-            <div class="col-7">
-                <form method='GET'>
-                    <input type="text" name="id" placeholder='id'>
-                    <input type="text" name="id_cliens" placeholder='id_cliens'>
-                    <input type="text" name="id_voiture" placeholder='id-voiture'>
-                    <input type="date" name="date_de_location">
-                    <input type="date" name="date_fin_de_location">
-                    <input type="number" name="disponible">
-                    <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
-                </form>
-            </div>
+            
+         
+
+<?php
+if(isset($_GET['action_ajout']) && !empty($_GET['cliens'])  && !empty($_GET['modele'])  && !empty($_GET['date_de_location'])&& !empty($_GET['date_fin_de_location']) && !empty($_GET['disponible'])){
+      
+    ajouter_louer_voiture();
+      } 
+?>
             </table>
+            
+            <form method='GET'>
+        <input type="text" name="cliens" placeholder='cliens'>
+        <input type="text" name="modele" placeholder='modele'>
+        <input type="date" name="date_de_location">
+        <input type="date" name="date_fin_de_location">
+        <input type="text" name="disponible"placeholder='disponible'>
+       <button type="submit" value="ajouter" name="action_ajout">Ajouter</button>
+    </form>
     </div>
     </div>
     <?php 

@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -31,9 +32,10 @@ $vehicules=$pdoStat->fetchAll();
     
 
 ?>
+
 <body>
 
-<header>
+    <header>
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-md-4 ">
@@ -82,87 +84,77 @@ $vehicules=$pdoStat->fetchAll();
         </div>
         </div>
     </nav>
+    <hr>
+    <section class="disponibilite">
 
-<section class="disponibilite">
-
-<div class="container overflow-auto">
-    <div class="row">
-        <div class="col-4">
-            <form method='GET'>
-                <input type="text" name="id" placeholder="Id du vehicule à modifier">
-                <input type="text" name="modele" placeholder="Modele du vehicule">
-                <input type="text" name="prix" placeholder="Prix du vehicule">
-                <input type="text" name="annee" placeholder="Annee du vehicule">
-                <button type="submit" value="modifier" name="action">Modifier</button>
-            </form>
-        </div>
-
-        <!-- <div class="col-4">
-            <form method='GET'>
-                <input type="text" name="id" placeholder="Id voiture à supprimer">
-                <button type="submit" value="supprimer" name="action">Supprimer</button>
-            </form>
-        </div>  -->
-
-        <div class="col-4">
-            <form method='GET'>
-                <input type="text" name="modele" placeholder='modele'>
-                <input type="text" name="prix" placeholder='prix'>
-                <input type="text" name="annee" placeholder='annee'>
-                <button type="submit" value="ajouter" name="action">Ajouter</button>
-            </form>
-        </div>
-    </div>
-</div>
-<?php 
+       
+            <?php 
 if(isset($_GET['action']) && $_GET['action']=="supprimer" && isset($_GET['idasupr'])){
 
 supprimer($_GET['idasupr']);
 }
 ?>
 
-<?php 
+            <?php 
 if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee'])){
 
 modifier();
 }
 
 ?>
-<div class="container overflow-auto ">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID </th>
-                <th scope="col">MODELE </th>
-                <th scope="col">PRIX </th>
-                <th scope="col">ANNEE </th>
-                <th scope="col">DISPONIBLE</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <?php foreach($vehicules as $vehicule):
-        if ($vehicule['Disponible'] =='1'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
-        <tbody class='table'>
-            <tr class="thead-light">
-                <th scope="col"><?= $vehicule['id_voiture']?></th>
-                <th scope="col"><?= $vehicule['modele_voiture']?></th>
-                <th scope="col"><?= $vehicule['prix_voiture']?></th>
-                <th scope="col"><?= $vehicule['annee_voiture']?></th>
-                <th scope="col"><?= $dispo ?></th>
-                <th scope="col" class="scoou">
-                    <form method='GET'>
-                        <input type="hidden" name="idasupr" value="<?= $vehicule['id_voiture']?>">
-                        <button type="submit" value="supprimer" name="action">Supprimer</button>
-                    </form>
-                </th>
-            </tr>
-        </tbody>
-        <?php endforeach; ?>
-    </table>
-</section>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+<form method='GET'>
+                            <input class="form-control" type="text" name="modele" placeholder='modele'>
+                            <input class="form-control" type="text" name="prix" placeholder='prix'>
+                            <input class="form-control" type="text" name="annee" placeholder='annee'>
+                            <button type="submit" value="ajouter" name="action">Ajouter</button>
+                        </form></div>
 
-<hr class="her" />
+<div class='col-6'>
+<form method='GET'>
+                            <input class="form-control" type="text" name="id" placeholder="Id du vehicule à modifier">
+                            <input class="form-control" type="text" name="modele" placeholder="Modele du vehicule">
+                            <input class="form-control" type="text" name="prix" placeholder="Prix du vehicule">
+                            <input class="form-control" type="text" name="annee" placeholder="Annee du vehicule">
+                            <button type="submit" value="modifier" name="action">Modifier</button>
+                        </form></div></div></div>
+            <div class="container overflow-auto ">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID </th>
+                            <th scope="col">MODELE </th>
+                            <th scope="col">PRIX </th>
+                            <th scope="col">ANNEE </th>
+                            <th scope="col">DISPONIBLE</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <?php foreach($vehicules as $vehicule):
+        if ($vehicule['Disponible'] =='1'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
+                    <tbody class='table'>
+                        <tr class="thead-light">
+                            <th scope="col"><?= $vehicule['id_voiture']?></th>
+                            <th scope="col"><?= $vehicule['modele_voiture']?></th>
+                            <th scope="col"><?= $vehicule['prix_voiture']?></th>
+                            <th scope="col"><?= $vehicule['annee_voiture']?></th>
+                            <th scope="col"><?= $dispo ?></th>
+                            <th scope="col" class="scoou">
+                                <form method='GET'>
+                                    <input type="hidden" name="idasupr" value="<?= $vehicule['id_voiture']?>">
+                                    <button type="submit" value="supprimer" name="action">Supprimer</button>
+                                </form>
+                            </th>
+                        </tr>
+                    </tbody>
+                    <?php endforeach; ?>
+                </table>
+    </section>
+    </div>
+
+    <hr class="her" />
 
     <footer>
         <div class="container">
@@ -188,5 +180,6 @@ modifier();
             </div>
         </div>
     </footer>
-        </body>
-        </html>
+</body>
+
+</html>

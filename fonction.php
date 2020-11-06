@@ -158,25 +158,19 @@ function historique(){
 
 
                                                         // AJOUTER LOCATION//
-                                                        function ajouter_louer_voiture(){
-                                                            $ajouter_louer =  bdd()->prepare('INSERT INTO louer (id_cliens,id_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
-                                                            $ajouter_louer->bindParam(':cliens', $_GET['id_cliens'], 
-                                                            PDO::PARAM_INT);
-                                                            $ajouter_louer->bindParam(':modele', $_GET['id_voiture'], 
-                                                            PDO::PARAM_INT);
-                                                            $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], 
-                                                            PDO::PARAM_STR);
-                                                            $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], 
-                                                            PDO::PARAM_STR);
-                                                            $ajouter_louer->bindParam(':disponible', $_GET['disponible'], 
-                                                            PDO::PARAM_INT);
-                                                            $plus_louer=$ajouter_louer->execute();
-                                                                if($plus_louer){
-                                                                    echo 'votre enregistrement a été ajouté';
-                                                                } else {
-                                                                    echo 'Une erreur est survenue';
-                                                                }
-                                                        }
-
+function ajouter_louer_voiture(){
+    $ajouter_louer =  bdd()->prepare('INSERT INTO louer (id_cliens,id_voiture,date_de_location,date_fin_de_location,disponible) VALUES ( :cliens, :modele, :date_de_location, :date_fin_de_location,:disponible)');
+    $ajouter_louer->bindParam(':cliens', $_GET['cliens'], PDO::PARAM_INT);
+    $ajouter_louer->bindParam(':modele', $_GET['modele'], PDO::PARAM_INT);
+    $ajouter_louer->bindParam(':date_de_location', $_GET['date_de_location'], PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':date_fin_de_location', $_GET['date_fin_de_location'], PDO::PARAM_STR);
+    $ajouter_louer->bindParam(':disponible', $_GET['disponible'], PDO::PARAM_INT);
+    $plus_louer=$ajouter_louer->execute();
+        if($plus_louer){
+            echo 'votre enregistrement a été ajouté';
+        } else {
+            echo 'Une erreur est survenue';
+        }
+}
 ?>
 

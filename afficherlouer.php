@@ -1,193 +1,34 @@
-<?php
+<?php 
+include('fonction.php');
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=librairie', 'root', '');
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet librairie</title>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
 <body>
-
-    <!-- Comme on va interagir avec une base de données la première chose est de se connecter à celle-ci -->
-    <?php
-
-    try {
-        $db = new PDO('mysql:host=localhost;dbname=librairie', 'root', '');
-        }
-    catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }
-?>
-
-    <p>Ajouter un nouveau livre
-</p>
+    <p> louer vôtre voiture, s'il vous plaît <p>
+    
     <form method='GET'>
-        <input type="text" name="nomdulivre">
-        <input type="date" name="date">
-        <input type="text" name="auteur">
-        <button type="submit" value="ajouter" name="action">Ajouter</button>
-    </form>
+                            <input class="form-control" type="text" name="modele" placeholder='modele'>
+                            <input class="form-control" type="text" name="prix" placeholder='prix'>
+                            <input class="form-control" type="text" name="annee" placeholder='annee'>
+                            <button type="submit" value="ajouter" name="action">Ajouter</button>
+                        </form>
 
-    <?php 
-    if(isset($_GET['action']) && !empty($_GET['nomdulivre'])  && !empty($_GET['date'])  && !empty($_GET['auteur'])){
-        $toto =  $_GET['date'];
-        $ajouter = $db->prepare('INSERT INTO livres (Titre_Livres, annees_Livres, nom_Livres ) VALUES (:titre, :annee, :auteur)');
-        $ajouter->bindParam(':titre', $_GET['nomdulivre'], 
-        PDO::PARAM_STR);
-        $ajouter->bindParam(':annee', $_GET['date'], 
-        PDO::PARAM_STR);
-        $ajouter->bindParam(':auteur', $_GET['auteur'], 
-        PDO::PARAM_STR);
-        $estceok = $ajouter->execute();
-      
-            if($estceok){
-                echo 'votre enregistrement a été ajouté avec succés';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
-        }
-    ?>
+                        <form method='GET'>
+                            <input class="form-control" type="text" name="id" placeholder="Id du vehicule à modifier">
+                            <input class="form-control" type="text" name="modele" placeholder="Modele du vehicule">
+                            <input class="form-control" type="text" name="prix" placeholder="Prix du vehicule">
+                            <input class="form-control" type="text" name="annee" placeholder="Annee du vehicule">
+                            <button type="submit" value="modifier" name="action">Modifier</button>
+                        </form>
 
-<p>Supprimer un livre
-    <p>
-    <form method='GET'>
-        <input type="text" name="id" placeholder="Id du livre a supprimer">
-        <button type="submit" value="supprimer" name="action">Supprimer</button>
-    </form>
-
-    <?php 
-    if(isset($_GET['action']) && $_GET['action']=="supprimer" && !empty($_GET['id'])){
-        
-        $supprimer = $db->prepare('DELETE FROM livres WHERE ID_livre_Livres =:id');
-        $supprimer->bindParam(':id', $_GET['id'], 
-        PDO::PARAM_STR);
-
-
-        $supprimer = $supprimer->execute();
-            if($supprimer){
-                echo 'votre enregistrement a bien été supprimé';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
-        }
-    ?>
-
-    
-<p>Modifier un livre
-    <p>
-    <form method='GET'>
-        <input type="text" name="id" placeholder="Id du livre à modifier">
-        <select name="colonne">
-            <option value="Titre_Livres">Titre du livre</option>
-            <option value="nom_Livres">Auteur</option>
-        <input type="text" name="modif" placeholder="Modification à apporter">
-        <button type="submit" value="modifier" name="action">Modifier</button>
-    </form>
-
-    <?php 
-    if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['colonne'])  && !empty($_GET['modif'])){
-        $message = '';
-        $modifier = $db->prepare('UPDATE livres SET '.$_GET['colonne'].' = :modif WHERE ID_livre_Livres =:id');
-        $modifier->bindParam(':id', $_GET['id'], 
-        PDO::PARAM_STR);
-        // $modifier->bindParam(':colonnes', $_GET['colonne'], 
-        // PDO::PARAM_STR);
-        $modifier->bindParam(':modif', $_GET['modif'], 
-        PDO::PARAM_STR);
-        $modifier = $modifier->execute();
-        // $modifier->debugDumpParams();
-        // die;
-            if($modifier){
-                echo 'votre enregistrement a bien été modifié';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
-        }
-
-        
-    ?>
-
-
-<p>Modifier un livre V2
-    <p>
-    <form method='GET'>
-        <input type="text" name="id" placeholder="Id du livre à modifier">
-        <input type="text" name="titredulivre" placeholder="Titre a modifier">
-        <input type="text" name="auteurdulivre" placeholder="Auteur a modifier">
-        <button type="submit" value="modifier2" name="action">Modifier</button>
-    </form>
-
-    <?php 
-    if(isset($_GET['action']) && $_GET['action']=="modifier2"  && !empty($_GET['id'])  && !empty($_GET['titredulivre'])  && !empty($_GET['auteurdulivre'])){
-       
-        $modifierv2 = $db->prepare('UPDATE livres SET Titre_Livres = :titredulivre, nom_Livres = :auteurdulivre WHERE ID_livre_Livres =:id');
-        $modifierv2->bindParam(':id', $_GET['id'], PDO::PARAM_STR);
-        $modifierv2->bindParam(':auteurdulivre', $_GET['auteurdulivre'], PDO::PARAM_STR);
-        $modifierv2->bindParam(':titredulivre', $_GET['titredulivre'], PDO::PARAM_STR);        
-
-
-
-        
-        $modifierv2 = $modifierv2->execute();
-        // $modifier->debugDumpParams();
-        // die;
-            if($modifierv2){
-                echo 'votre enregistrement a bien été modifié';
-                
-            
-            } else {
-                echo 'Veuillez recommencer svp, une erreur est survenue';
-            }
-        }
-
-        
-    ?>
-
-<p>Boucle pré-rempli</p>
-<?php 
- $recuperation = $db->query('SELECT * FROM Livres');
- while ($livre = $recuperation->fetch()) {
-    echo "<form><div> <input type='text' name='id' value='".$livre['ID_livre_Livres']."'>
-    <input type='text' name='titredulivre' value='".$livre['Titre_Livres']."'>
-    <input type='text' name='annee' value='".$livre['annees_Livres']."'>
-    <input type='text' name='auteurdulivre' value='".$livre['nom_Livres']."'>
-    
-    <button type='submit' value='modifier2' name='action'>Modifier</button>
-    <button type='submit' value='supprimer' name='action'>Supprimer</button>
-    
-    </form>
-    
-    </div>";
-    
-    
-  
- }
-
-
-
-?>
-
-
-
-
-</body>
-
+    </body>
 </html>
