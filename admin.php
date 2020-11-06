@@ -70,49 +70,13 @@ include ('fonction.php');
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Location d'utilitaires
+                    Administration
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="admin.php">Clients</a>
+                    <a class="dropdown-item" href="vehicules.php">vehicule</a>
+                    <a class="dropdown-item" href="historique.php">Historique</a>
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Offres
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Ma réservation
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="afficherlouer.php">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Fidélité
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin.html">Espace pro</a>
             </li>
             </ul>
         </div>
@@ -133,7 +97,7 @@ $client=$pdoStat->fetchAll();
     <section class="tableau">
         <div class="container overflow-auto">
             <div class="row">
-                <table id="Tatable" class="table col-sm-1 ">
+                <table id="Tatable" class="table col-12 ">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID </th>
@@ -142,7 +106,6 @@ $client=$pdoStat->fetchAll();
                             <th scope="col">PRENOM </th>
                             <th scope="col"> VILLE</th>
                             <th scope="col"> CODE POSTAL</th>
-                            <th scope="col"> Détails</th>
                         </tr>
                     </thead>
                     <?php foreach($client as $client): ?>
@@ -154,161 +117,62 @@ $client=$pdoStat->fetchAll();
                             <th scope="col"><?= $client['prenom_clients']?></th>
                             <th scope="col"><?= $client['ville_clients']?></th>
                             <th scope="col"><?= $client['cp_cliens']?></th>
-                            <th scope="col" class="col"><button>Historique</button></th>
                         </tr>
                     </tbody>
                     <?php endforeach; ?>
                 </table>
-                 </div>
-    </section>
-
-
-
-
-    <?php 
-
-$pdoStat =bdd()->prepare('SELECT * FROM vehicule  ');
-$executeIsOk=$pdoStat->execute();
-$vehicules=$pdoStat->fetchAll();
-
-
-    
-
-?>
-
-    <section class="disponibilite">
-
-        <div class="container overflow-auto">
-            <div class="row">
-                <div class="col-4">
-                    <form method='GET'>
-                        <input type="text" name="id" placeholder="Id du vehicule à modifier">
-                        <input type="text" name="modele" placeholder="Modele du vehicule">
-                        <input type="text" name="prix" placeholder="Prix du vehicule">
-                        <input type="text" name="annee" placeholder="Annee du vehicule">
-                        <button type="submit" value="modifier" name="action">Modifier</button>
-                    </form>
-                </div>
-
-               <!-- <div class="col-4">
-                    <form method='GET'>
-                        <input type="text" name="id" placeholder="Id voiture à supprimer">
-                        <button type="submit" value="supprimer" name="action">Supprimer</button>
-                    </form>
-                </div>  -->
-
-                <div class="col-4">
-                    <form method='GET'>
-                        <input type="text" name="modele" placeholder='modele'>
-                        <input type="text" name="prix" placeholder='prix'>
-                        <input type="text" name="annee" placeholder='annee'>
-                        <button type="submit" value="ajouter" name="action">Ajouter</button>
-                    </form>
-                </div>
             </div>
-        </div>
-        <?php 
-    if(isset($_GET['action']) && $_GET['action']=="supprimer" && isset($_GET['idasupr'])){
-    
-        supprimer($_GET['idasupr']);
-    }
-    ?>
+            <div class="row">
+                <form method="GET">
+                    <input name='prenom_clients'>
+                    <input name='nom_clients'>
+                    <input name='id_cliens'>
+                    <button type='submit' name='historique' value='historique'>Historique</button>
+                </form>
+                </table>
+            </div>
 
-        <?php 
-    if(isset($_GET['action']) && $_GET['action']=="modifier"  && !empty($_GET['id'])  && !empty($_GET['modele']) && !empty($_GET['prix'])  && !empty($_GET['annee'])){
-       
-       modifier();
-        }
-    
-?>
-        <div class="container ">
             <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID </th>
-                        <th scope="col">MODELE </th>
-                        <th scope="col">PRIX </th>
-                        <th scope="col">ANNEE </th>
-                        <th scope="col">DISPONIBLE</th>
-                    </tr>
-                </thead>
-                <?php foreach($vehicules as $vehicule):
-                if ($vehicule['Disponible'] =='1'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
-                <tbody class='table'>
-                    <tr class="thead-light">
-                        <th scope="col"><?= $vehicule['id_voiture']?></th>
-                        <th scope="col"><?= $vehicule['modele_voiture']?></th>
-                        <th scope="col"><?= $vehicule['prix_voiture']?></th>
-                        <th scope="col"><?= $vehicule['annee_voiture']?></th>
-                        <th scope="col"><?= $dispo ?></th>
-                        <th scope="col" class="scoou"><form method='GET'>
-                             <input type="hidden" name="idasupr" value="<?= $vehicule['id_voiture']?>">
-                        <button type="submit"  value="supprimer" name="action">Supprimer</button>
-                    </form></th>
-                    </tr>
-                </tbody>
-                <?php endforeach; ?>
-            </table>
-    </section>
-    </div>
-    <?php 
-     $db  = new PDO('mysql:host=localhost;dbname=voiture', 'root', '');
-
-$pdoStat = $db->prepare('SELECT * FROM louer
-INNER JOIN client ON client.id_cliens = louer.id_cliens
-     INNER JOIN vehicule ON vehicule.id_voiture = louer.id_voiture ');
-$executeIsOk=$pdoStat->execute();
-$louers=$pdoStat->fetchAll();
-
-
-?>
-
-
-    <div class="container">
-        <p> Vous avez loué <p>
-                <table class="table col-5">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col"> nom client</th>
-                            <th scope="col">modèle de la voiture</th>
-                            <th scope="col"> DATE DE LOCATION </th>
-                            <th scope="col"> DATE FIN DE LOCATION </th>
-                            <th scope="col">Disponible</th>
+                            <th scope="col"> Historique</th>
                         </tr>
-                    </thead>
-                    <?php foreach($louers as $louer): ?>
+                    </thead
                     <tbody class='table'>
                         <tr class="thead-light">
-                            <th scope="col"><?= $louer['nom_clients'].' '.$louer['adresse_clients']?></th>
-                            <th scope="col"><?= $louer['modele_voiture']?></th>
-                            <th scope="col"><?= $louer['date_de_location']?></th>
-                            <th scope="col"><?= $louer['date_fin_de_location']?></th>
-                            <th scope="col"><?= $louer['disponible']?></th>
+                            <td> <?php  
 
-                        </tr>
-                    </tbody>
-                    <?php endforeach; ?>
-                    <div class="col-7">
-                        <form method='GET'>
-                            <input type="text" name="id" placeholder='id'>
-                            <input type="text" name="id_cliens" placeholder='id_cliens'>
-                            <input type="text" name="id_voiture" placeholder='id-voiture'>
-                            <input type="date" name="date_de_location">
-                            <input type="date" name="date_fin_de_location">
-                            <input type="number" name="disponible">
-                            <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
-                        </form>
-
-                        <?php 
-    if(isset($_GET['action_louer']) && $_GET['action_louer']=="modifier_louer" && !empty($_GET['id'])  && !empty($_GET['id_cliens']) 
-     && !empty($_GET['id_voiture'])  && !empty($_GET['disponible'])&& !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
-       modifier_louer();
-        
-        }
-      
-    
+if(isset($_GET['historique']) && $_GET['historique']=="historique"){
+    historique();
+}
 ?>
-                    </div>
+</table>
+    </section>
+    <hr class="her" />
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h2 class="uppercase">Hertz.com</h2>
+                <p class="tfi">Réserver</p>
+                <p class="tfi">Nos offres spéciales</p>
+                <p class="tfi">Notre flotte</p>
+            </div>
+            <div class="col-4">
+                <h2>A propos de Hertz</h2>
+                <p class="tfi">Réserver</p>
+                <p class="tfi">Nos offres spéciales</p>
+                <p class="tfi">Notre flotte</p>
+            </div>
+            <div class="col-4">
+                <h2>Assistance</h2>
+                <p class="tfi">Réserver</p>
+                <p class="tfi">Nos offres spéciales</p>
+                <p class="tfi">Notre flotte</p>
+            </div>
+        </div>
     </div>
+</footer>
 
 </body>

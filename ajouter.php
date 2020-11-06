@@ -5,7 +5,7 @@ include ('fonction.php');
 
 <?php 
 
-$pdoStat = $db->prepare('SELECT * FROM louer ');
+$pdoStat = db()->prepare('SELECT * FROM louer ');
     $executeIsOk=$pdoStat->execute();
     $louer=$pdoStat->fetchAll();
     ?>
