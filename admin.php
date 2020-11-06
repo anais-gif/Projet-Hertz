@@ -62,9 +62,8 @@ include ('fonction.php');
                     location de voitures
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Réservez une voiture </a>
-                    <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
-                    <a class="dropdown-item" href="pagetest.html">Nos voitures de location</a>
+                    <a class="dropdown-item" href="index.php">Réservez une voiture </a>
+              
                 </div>
             </li>
             <li class="nav-item dropdown">

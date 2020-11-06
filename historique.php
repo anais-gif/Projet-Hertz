@@ -48,121 +48,127 @@ $louers=$pdoStat->fetchAll();
 
 
 ?>
-<body>
-    <header>
+
+    <body>
+        <header>
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-12 col-md-4 ">
+                        <p class="ale">Hertz</p>
+                    </div>
+
+
+
+                    <!--Fin PopUp-->
+
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        location de voitures
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="index.php">Réservez une voiture </a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Administration
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="admin.php">Clients</a>
+                        <a class="dropdown-item" href="vehicules.php">Vehicules</a>
+                        <a class="dropdown-item" href="historique.php">Historique</a>
+                    </div>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <hr>
         <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-12 col-md-4 ">
-                    <p class="ale">Hertz</p>
-                </div>
-
-
-
-                <!--Fin PopUp-->
-
-            </div>
-        </div>
-    </header>
-
-    <nav class="nav navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    location de voitures
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Réservez une voiture </a>
-                    <a class="dropdown-item" href="#">Nos destinations les plus populaires</a>
-                    <a class="dropdown-item" href="pagetest.html">Nos voitures de location</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Administration
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="admin.php">Clients</a>
-                    <a class="dropdown-item" href="vehicules.php">Vehicules</a>
-                    <a class="dropdown-item" href="historique.php">Historique</a>
-                </div>
-            </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
-    <hr>
-    <div class="container">
-        <div class='col-8'>
+            <div class='col-12'>
                 <form method='GET'>
-                <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="">Id</span>
-  </div>
-                    <input class="form-control" type="text" name="id" placeholder='id'>
-                    <input class="form-control" ' type="text" name="id_cliens" placeholder='id_cliens'>
-                    <input class="form-control"  type="text" name="id_voiture" placeholder='id-voiture'></div>
-                    <div class="input-group-prepend">
-   <div class='col-8'> <span class="input-group-text" id="">Date</span>
-                    <input class="form-control" type="date" name="date_de_location">
-                    <input class="form-control"  type="date" name="date_fin_de_location">
-                    <input class="form-control"  type="number" name="disponible">
-                    <button  type="submit" value="modifier_louer" name="action_louer">Modifier</button>
-                </form></div>
-            </div>
-    <div class="container overflow-auto">
-
-        <table class="table col-12 ">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col"> nom client</th>
-                    <th scope="col">modèle de la voiture</th>
-                    <th scope="col"> DATE DE LOCATION </th>
-                    <th scope="col"> DATE FIN DE LOCATION </th>
-                    <th scope="col">Disponible</th>
-                </tr>
-            </thead>
-            <?php foreach($louers as $louer): ?>
-            <tbody class='table'>
-                <tr class="thead-light">
-                    <th scope="col"><?= $louer['nom_clients'].' '?></th>
-                    <th scope="col"><?= $louer['modele_voiture']?></th>
-                    <th scope="col"><?= $louer['date_de_location']?></th>
-                    <th scope="col"><?= $louer['date_fin_de_location']?></th>
-                    <th scope="col"><?= $louer['disponible']?></th>
-
-                </tr>
-            </tbody>
-            <?php endforeach; ?>
+                    
+                        
             
-         
+            <div class='col-6'>    <span class="input-group-text " id="">Id</span>
+                    
+                        <input class="form-control" type="text" name="id" placeholder='id'>
+                        <input class="form-control" ' type="text" name="id_cliens" placeholder=' id_cliens'>
+                        <input class="form-control" type="text" name="id_voiture" placeholder='id-voiture'>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class='col-6'> <span class="input-group-text" id="">Date</span>
+                            <input class="form-control" type="date" name="date_de_location">
+                            <input class="form-control" type="date" name="date_fin_de_location">
+                            <input class="form-control" type="number" name="disponible">
+                            <button type="submit" value="modifier_louer" name="action_louer">Modifier</button>
+                </form>
+            </div>
+        </div>
+        <div class="container overflow-auto">
 
-<?php
+            <table class="table col-12 ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"> nom client</th>
+                        <th scope="col">modèle de la voiture</th>
+                        <th scope="col"> DATE DE LOCATION </th>
+                        <th scope="col"> DATE FIN DE LOCATION </th>
+                        <th scope="col">Disponible</th>
+                    </tr>
+                </thead>
+                <?php foreach($louers as $louer): ?>
+                <tbody class='table'>
+                    <tr class="thead-light">
+                        <th scope="col"><?= $louer['nom_clients'].' '?></th>
+                        <th scope="col"><?= $louer['modele_voiture']?></th>
+                        <th scope="col"><?= $louer['date_de_location']?></th>
+                        <th scope="col"><?= $louer['date_fin_de_location']?></th>
+                        <th scope="col"><?= $louer['disponible']?></th>
+
+                    </tr>
+                </tbody>
+                <?php endforeach; ?>
+
+
+
+                <?php
 if(isset($_GET['action_ajout']) && !empty($_GET['cliens'])  && !empty($_GET['modele'])  && !empty($_GET['date_de_location'])&& !empty($_GET['date_fin_de_location']) && !empty($_GET['disponible'])){
       
     ajouter_louer_voiture();
       } 
 ?>
             </table>
-            
-            <form method='GET'>
-        <input type="text" name="cliens" placeholder='cliens'>
-        <input type="text" name="modele" placeholder='modele'>
-        <input type="date" name="date_de_location">
-        <input type="date" name="date_fin_de_location">
-        <input type="text" name="disponible"placeholder='disponible'>
-       <button type="submit" value="ajouter" name="action_ajout">Ajouter</button>
-    </form>
+<div class="container">
+    <div class="row">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Info</span>
+                </div> <form method='GET'>
+                    <input class="form-control" type="text" name="cliens" placeholder='cliens'>
+                    <input class="form-control" type="text" name="modele" placeholder='modele'></div>
+                    <input class="form-control" type="date" name="date_de_location">
+                    <input class="form-control" type="date" name="date_fin_de_location">
+                    <input class="form-control" type="text" name="disponible" placeholder='disponible'></div><div class="row">
+                    <button type="submit" value="ajouter" name="action_ajout">Ajouter</button></div>
+                </form>
     </div>
-    </div>
-    <?php 
+        <?php 
     if(isset($_GET['action_louer']) && $_GET['action_louer']=="modifier_louer" && !empty($_GET['id'])  && !empty($_GET['id_cliens']) 
      && !empty($_GET['id_voiture'])  && !empty($_GET['disponible'])&& !empty($_GET['date_de_location'])  && !empty($_GET['date_fin_de_location'])){
        modifier_louer();
@@ -173,33 +179,33 @@ if(isset($_GET['action_ajout']) && !empty($_GET['cliens'])  && !empty($_GET['mod
 ?>
 
 
-    <hr class="her" />
+        <hr class="her" />
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <h2 class="uppercase">Hertz.com</h2>
-                    <p class="tfi">Réserver</p>
-                    <p class="tfi">Nos offres spéciales</p>
-                    <p class="tfi">Notre flotte</p>
-                </div>
-                <div class="col-4">
-                    <h2>A propos de Hertz</h2>
-                    <p class="tfi">Réserver</p>
-                    <p class="tfi">Nos offres spéciales</p>
-                    <p class="tfi">Notre flotte</p>
-                </div>
-                <div class="col-4">
-                    <h2>Assistance</h2>
-                    <p class="tfi">Réserver</p>
-                    <p class="tfi">Nos offres spéciales</p>
-                    <p class="tfi">Notre flotte</p>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <h2 class="uppercase">Hertz.com</h2>
+                        <p class="tfi">Réserver</p>
+                        <p class="tfi">Nos offres spéciales</p>
+                        <p class="tfi">Notre flotte</p>
+                    </div>
+                    <div class="col-4">
+                        <h2>A propos de Hertz</h2>
+                        <p class="tfi">Réserver</p>
+                        <p class="tfi">Nos offres spéciales</p>
+                        <p class="tfi">Notre flotte</p>
+                    </div>
+                    <div class="col-4">
+                        <h2>Assistance</h2>
+                        <p class="tfi">Réserver</p>
+                        <p class="tfi">Nos offres spéciales</p>
+                        <p class="tfi">Notre flotte</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-</body>
+    </body>
 
 </html>
