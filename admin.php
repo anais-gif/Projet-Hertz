@@ -133,7 +133,7 @@ $client=$pdoStat->fetchAll();
     <section class="tableau">
         <div class="container overflow-auto">
             <div class="row">
-                <table class="table col-sm-1 ">
+                <table id="Tatable" class="table col-sm-1 ">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID </th>
@@ -190,12 +190,13 @@ $vehicules=$pdoStat->fetchAll();
                     </form>
                 </div>
 
-                <div class="col-4">
+               <!-- <div class="col-4">
                     <form method='GET'>
                         <input type="text" name="id" placeholder="Id voiture à supprimer">
                         <button type="submit" value="supprimer" name="action">Supprimer</button>
                     </form>
-                </div>
+                </div>  -->
+
                 <div class="col-4">
                     <form method='GET'>
                         <input type="text" name="modele" placeholder='modele'>
@@ -207,9 +208,9 @@ $vehicules=$pdoStat->fetchAll();
             </div>
         </div>
         <?php 
-    if(isset($_GET['action']) && $_GET['action']=="supprimer" && !empty($_GET['id'])){
+    if(isset($_GET['action']) && $_GET['action']=="supprimer" && isset($_GET['idasupr'])){
     
-        supprimer();
+        supprimer($_GET['idasupr']);
     }
     ?>
 
@@ -232,7 +233,7 @@ $vehicules=$pdoStat->fetchAll();
                     </tr>
                 </thead>
                 <?php foreach($vehicules as $vehicule):
-                if ($vehicule['Disponible'] =='0'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
+                if ($vehicule['Disponible'] =='1'){$dispo='Disponible';} else{$dispo='indisponible';} ?>
                 <tbody class='table'>
                     <tr class="thead-light">
                         <th scope="col"><?= $vehicule['id_voiture']?></th>
@@ -240,6 +241,10 @@ $vehicules=$pdoStat->fetchAll();
                         <th scope="col"><?= $vehicule['prix_voiture']?></th>
                         <th scope="col"><?= $vehicule['annee_voiture']?></th>
                         <th scope="col"><?= $dispo ?></th>
+                        <th scope="col" class="scoou"><form method='GET'>
+                             <input type="hidden" name="idasupr" value="<?= $vehicule['id_voiture']?>">
+                        <button type="submit"  value="supprimer" name="action">Supprimer</button>
+                    </form></th>
                     </tr>
                 </tbody>
                 <?php endforeach; ?>

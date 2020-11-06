@@ -89,14 +89,26 @@ function modifier(){
             }
 }
 
-function supprimer(){
-    $supprimer =  bdd()->prepare('DELETE FROM vehicule WHERE id_voiture = :id');
-        $supprimer->bindParam(':id', $_GET['id'],PDO::PARAM_STR);
+function supprimer($idvoiture){
+    $supprimer =  bdd()->prepare('DELETE FROM vehicule WHERE id_voiture=:id');
+        $supprimer->bindParam(':id', $idvoiture,PDO::PARAM_INT);
 
 
         $supprimer = $supprimer->execute();
             if($supprimer){
                 echo 'votre enregistrement a bien été supprimé';
+                
+                $filename='Admin.php#Tatable';
+                if (!headers_sent())
+                header('Location: '.$filename);
+                else {
+                echo '<script type="text/javascript">';
+                echo 'window.location.href="'.$filename.'";';
+                echo '</script>';
+                echo '<noscript>';
+                echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
+                echo '</noscript>';
+                }
                 
             
             } else {
@@ -122,11 +134,6 @@ function modifier_louer(){
         }
 }
 
-function refresh(){
-    $delai=1; 
-    $url='#';
-    header("Refresh: $delai;url=$url");
-}
 
 ?>
 
