@@ -192,12 +192,12 @@ $vehicule=$pdoStat->fetchAll();
                 aria-controls="collapseExample">
                 Voitures
             </a>
-            <a class="btn b2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            <a class="btn b2" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                 aria-controls="collapseExample">
                 Véhicules utilitaires
             </a>
             <div class="collapse" id="collapseExample">
-                <hr class="hlol position-relative">
+                <hr class="hlel position-relative">
                 <div class="container magic position-relative">
 
 
@@ -211,7 +211,7 @@ $vehicule=$pdoStat->fetchAll();
                                 </tr>
                             </thead>
                             <?php foreach($vehicule as $vehicule):
-                                 if ($vehicule['Disponible'] =='0'){$dispo='disponible';} else{$dispo='indisponible';}  ?>
+                                 if ($vehicule['Disponible'] =='1'){$dispo='disponible';} else{$dispo='indisponible';}  ?>
                             <tbody class='table'>
                                 <tr class="thead-light">
                                     <th scope="col"><?= $vehicule['modele_voiture']?></th>
@@ -225,6 +225,37 @@ $vehicule=$pdoStat->fetchAll();
 
                 </div>
             </div>
+
+            <div class="collapse" id="collapseExample2">
+                <hr class="hlel position-relative">
+                <div class="container magic position-relative">
+
+
+                    
+                        <table class="table tablemagic">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">MODELE </th>
+                                    <th scope="col">PRIX </th>
+                                    <th scope="col">DISPONIBLE</th>
+                                </tr>
+                            </thead>
+                            <?php foreach($vehicule as $vehicule):
+                                 if ($vehicule['Disponible'] =='1'){$dispo='disponible';} else{$dispo='indisponible';}  ?>
+                            <tbody class='table'>
+                                <tr class="thead-light">
+                                    <th scope="col"><?= $vehicule['modele_voiture']?></th>
+                                    <th scope="col"><?= $vehicule['prix_voiture']?></th>
+                                    <th scope="col" ><?= $dispo ?></th>
+                                </tr>
+                            </tbody>
+                            <?php endforeach; ?>
+                            </table>
+                    
+
+                </div>
+            </div>
+
 
         </div>
         </div>
