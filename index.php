@@ -197,7 +197,7 @@ $vehicule=$pdoStat->fetchAll();
                 Véhicules utilitaires
             </a>
             <div class="collapse" id="collapseExample">
-                <hr class="hlel position-relative">
+                <hr class="hlol position-relative">
                 <div class="container magic position-relative">
 
 
