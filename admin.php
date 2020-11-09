@@ -101,8 +101,8 @@ $client=$pdoStat->fetchAll();
                         <tr>
                             <th scope="col">ID </th>
                             <th scope="col">ADRRESSE </th>
-                            <th scope="col">NOM </th>
                             <th scope="col">PRENOM </th>
+                            <th scope="col">NOM </th>
                             <th scope="col"> VILLE</th>
                             <th scope="col"> CODE POSTAL</th>
                         </tr>
@@ -123,8 +123,8 @@ $client=$pdoStat->fetchAll();
             </div>
             <div class="row">
                 <form method="GET">
-                    <input name='prenom_clients'>
-                    <input name='nom_clients'>
+                    <input type="hiden" name='prenom_clients'>
+                    <input type="hiden" name='nom_clients'>
                     <input name='id_cliens'>
                     <button type='submit' name='historique' value='historique'>Historique</button>
                 </form>

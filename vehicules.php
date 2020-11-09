@@ -100,6 +100,13 @@ modifier();
 }
 
 ?>
+
+<?php
+if(isset($_GET['action']) && !empty($_GET['modele'])  && !empty($_GET['prix'])  && !empty($_GET['annee']) && !empty($_GET['disponible'])){
+    ajouter();
+}
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-6">
